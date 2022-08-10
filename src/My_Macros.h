@@ -24,11 +24,19 @@ namespace MyMacros {
 
         // Only macros here
 
+        #if defined(BOARD_IDENTIFY_WARNING)
+            #warning "Matched defined(ARDUINO_AVR_UNO)"
+        #endif
+
 //ARDUINO SAMD
 
     #elif defined(ARDUINO_SAMD_MKRWAN1300)
 
         // Only macros here
+
+        #if defined(BOARD_IDENTIFY_WARNING)
+            #warning "Matched defined(ARDUINO_SAMD_MKRWAN1300)"
+        #endif
 
 // ESP8266
 
@@ -36,14 +44,28 @@ namespace MyMacros {
 
         // Only macros here
 
+        #if defined(BOARD_IDENTIFY_WARNING)
+            #warning "Matched defined(ARDUINO_ESP8266_WEMOS_D1MINI)"
+        #endif
+
 // ESP32
+
     #elif defined(ARDUINO_ESP32_DEV)
 
         // Only macros here
 
+        #if defined(BOARD_IDENTIFY_WARNING)
+            #warning "Matched defined(ARDUINO_ESP32_DEV)"
+        #endif
+
     #elif defined(ARDUINO_ESP32_THING)
 
         // Only macros here
+
+        #if defined(BOARD_IDENTIFY_WARNING)
+            #warning "Matched defined(ARDUINO_ESP32_THING)"
+        #endif
+
 
     #elif defined(ARDUINO_TINYPICO)
 
@@ -55,6 +77,7 @@ namespace MyMacros {
         const char* mcu = "ESP32";
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: ESP32 TinyPICO"
+            #warning "Matched defined(ARDUINO_TINYPICO)"
         #endif
 
 // STM32 F411CEU6 - Black Pill
@@ -73,6 +96,7 @@ namespace MyMacros {
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: STM32F411CE BlackPill"
+            #warning "Matched defined(ARDUINO_BLACKPILL_F411CE)"
         #endif
 
 // STM32 F103Fx - Blue Pill variants
@@ -91,6 +115,9 @@ namespace MyMacros {
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: STM32F103x BluePill"
+            #warning "Matched defined(ARDUINO_BLUEPILL_F103C6) or"
+            #warning "Matched defined(ARDUINO_BLUEPILL_F103C8) or"
+            #warning "Matched defined(ARDUINO_BLUEPILL_F103CB)"
         #endif
 
 // STM32 G031 - our new development boards
@@ -108,6 +135,7 @@ namespace MyMacros {
         const char* mcu = "G031F6";
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: D1-mini G031F6"
+            #warning "Matched defined(ARDUINO_D1MINI_G031F6)"
         #endif
 
     #elif defined(ARDUINO_D1MINI_G031F8)
@@ -123,6 +151,7 @@ namespace MyMacros {
         const char* mcu = "G031F8";
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: D1-mini G031F8"
+            #warning "Matched defined(ARDUINO_D1MINI_G031F8)"
         #endif
 
     #else

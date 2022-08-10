@@ -15,7 +15,7 @@ The easiest way is to download the ZIP-archive in `~/Arduino/libraries` or any o
 
 ## Examples
 
-Find code examples in Arduino IDE under `File->Examples->My_Macros`.
+Find a code example in Arduino IDE under `File->Examples->My_Macros`.
 
 Firstly, you must include the library in your sketch:
 ```cpp
@@ -25,7 +25,7 @@ The library expands on `Boards_Identify.h` capabilities, and pulls in the `Board
 
 ## Customizing and protecting your macros
 
-The `My_Macros.h` is by default installed in `~/Arduino/libraries/My_Macros/src/`. Use a local copy to avoid this file being overwritten by Arduino when the library updates. Protect this file and move this to `~/macros.` Create a symbolic link to this location. When the library file eventually is overwritten, re-create the link again.
+The `My_Macros.h` is by default installed in `~/Arduino/libraries/My_Macros/src/`. Use a local copy to avoid this file being overwritten by Arduino when the library updates. Protect this file and move this to `~/mymacros.` Create a symbolic link to this location. When the library file eventually is overwritten, re-create the link again.
 
 ```
 mkdir ~/mymacros
@@ -40,17 +40,19 @@ Arduino IDE will use your file that was moved to `~/mymacros`.
 
 ## Compile time identification
 
-To get a compile-time warning, add this line:
+To get a compile-time warning, add this line, before the line `#include <My_Macros.h>`.:
 ```cpp
 #define BOARD_IDENTIFY_WARNING
 ```
 Ensure that `File->Preferences->compiler warnings` is set to *Default* or *All*. It will likely show up quickly in the beginning, in red - as a warning - of all compiled messages fast scrolling down your eyes.
 
-## Arduino board identification
+In addition, the output from `My_Macros.h` includes the matching define, for example, `Matched defined(ARDUINO_AVR_UNO)` to remind ourselves what define causes the outcome. These definitions are very useful in the code, and based on that, include, exclude code, or add some macros.
+
+## Add a new Arduino board identification
 
 Being able to output board information to the screen or logs is generally useful. We are indeed working with the right board! This is identical to [Board Identify](https://github.com/MattFryer/Board_Identify) usage.
 
-`My Macros` library uses the namespace `MyMacros` to prevent conflicts with other libraries. You can therefore access the personal list of a board like so. Information about how Arduino uses the label `build.board` can be found in the `boards.txt` as, e.g. `tinypico.build.board=TINYPICO`. Enter `ARDUINO_TINYPICO` in the `My_Macros.h` file for `Board Model`.
+`My Macros` library uses the namespace `MyMacros` to prevent conflicts with other libraries. You can therefore access the personal list of a board like so. Information about how Arduino uses the label `build.board` can be found in the `boards.txt` as, e.g. `tinypico.build.board=TINYPICO`. Enter `ARDUINO_TINYPICO` for the `define` in `My_Macros.h` to match the new Arduino board.
 
 ```cpp
 Serial.print("Board Make: ");
