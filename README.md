@@ -1,12 +1,17 @@
 [![GitHub license](https://img.shields.io/github/license/berrak/My_Macros.svg?logo=gnu&logoColor=ffffff)](https://github.com/berrak/My_Macros/blob/master/LICENSE)
+[![GitHub version](https://img.shields.io/github/release/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
+[![GitHub Release Date](https://img.shields.io/github/release-date/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
+[![GitHub stars](https://img.shields.io/github/stars/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/issues)
+[![Codacy grade](https://img.shields.io/codacy/grade/05e2e79ae90d4b9489689f918ad2ccb5.svg?logo=codacy&logoColor=ffffff)](https://www.codacy.com/app/berrak/My_Macros)
 
-# My Macros
+# Arduino library My Macros
 `My_Macros` library allows identifying boards that you own. The library maintains *personal macros* for your unique collection of boards. The existing Arduino library `Boards Identify` aims to identify many Arduino-compatible boards. This library, `My Macros,` adds a separate header file with a *personal* list of boards in your possession.
 
 Another advantage of this library is that it gives us development flexibility when working in parallel with various boards. Using symbolic links for specific boards minimizes code duplication.
 
 ## How to Install
-The easiest way is to download the ZIP-archive in `~/Arduino/libraries` or any other folder. Possible remove *main* in the file name. Then in the sketch, open the menu `Sketch->Include library->Add ZIP Library...` and select the file. Arduino IDE will expand the ZIP-archive contents in the right location, i.e. `~/Arduino/libraries`.
+The easiest way is to download the ZIP-archive in `~/Arduino/libraries` or any other folder. Possible remove *master* in the file name. Then in the sketch, open the menu `Sketch->Include library->Add ZIP Library...` and select the file. Arduino IDE will expand the ZIP-archive contents in the right location, i.e. `~/Arduino/libraries`.
 
 ## Examples
 
