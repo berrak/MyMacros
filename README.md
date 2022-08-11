@@ -11,7 +11,12 @@
 Another advantage of this library is that it gives us development flexibility when working in parallel with various boards. Using symbolic links for specific boards minimizes code duplication.
 
 ## How to Install
-The easiest way is to download the ZIP-archive in `~/Arduino/libraries` or any other folder. Possible remove *master* in the file name. Then in the sketch, open the menu `Sketch->Include library->Add ZIP Library...` and select the file. Arduino IDE will expand the ZIP-archive contents in the right location, i.e. `~/Arduino/libraries`.
+
+1. Navigate to the [Releases page](https://github.com/berrak/My_Macros/releases).
+1. Download the latest released ZIP-archive in `~/Arduino/libraries` or any other folder.
+1. Rename the file, i.e. remove *master* like this `My_Macros.zip`.
+1. In the Arduino IDE, navigate to `Sketch->Include Library->Add .ZIP Library...` and select the file.
+1. Arduino IDE will expand the ZIP-archive contents in the right location, i.e. `~/Arduino/libraries`.
 
 ## Examples
 
@@ -98,18 +103,19 @@ The organization for sub-folders in `CODE` is very personal. For example, use so
 ├── communication
 ├── digital
 ├── display
+├── neopixel
 ├── sensors
-└── USB
+└── usb
 ```
 For example, the idea is to have one typical *blink* sketch for all of our development boards. Thus, when saving the built-in` blink.ino` sketch should be below `CODE,` e.g. `../CODE/basic/blink/blink.ino` and is not below any development board directories. The header macros will handle any differences between individual boards.
 
-## Add a symbolic link (manually) to the code directory
+## Add a symbolic link (manually) in the device tree to the code directory
 
 Change the folder to one of the development boards and its main directory and create the link to the familiar `blink.ino`.
 ```
 $ cd ~/Arduino/debinixSTM32G031F8
 $ ln -s ../CODE/basic/blink/blink.ino blink.ino
-$ ls -l
+$ ls -l blink
  blink.ino -> ../CODE/basic/blink/blink.ino
 ```
 We are working in this particular development board directory, but we are editing the typical `blink.ino` file. Define the board macros in the `My_Macros. h' file.
@@ -118,7 +124,7 @@ Change to another development board folder, the main directory, and create a sec
 ```
 $ cd ~/Arduino/lolinESP8266
 $ ln -s ../CODE/basic/blink/blink.ino blink.ino
-$ ls -l
+$ ls -l blink
  blink.ino -> ../CODE/basic/blink/blink.ino
 ```
 
@@ -136,7 +142,7 @@ Open an editor and copy the content below.
 #!/bin/bash
 #
 # mylink - script to find and create a symbolic link to a source Arduino sketch
-# Author: Debinix Team (C). License GPL-3.0.
+# Author: Debinix Team (C). License GPL-3.0
 # Date: 2022-08-10
 #
 parent_boards_directory_name="Arduino/CODE"
@@ -152,21 +158,27 @@ esac
 
 if echo "$fname" | grep -q "\.ino"; then
   echo "Sketch '$fname'"
+  mydir=$( cut -d '.' -f 1 <<< "$fname" )
 else
   echo "Missing '.ino' in the sketch name. Please correct and retry."
   exit
 fi
 
-if test -h "$fname";
+# Create a subdirectory for Arduino IDE
+if [ ! -d "$mydir" ] 
 then
-    echo "A symbolic link with the name '$fname' already exists in '$PWD'. Please remove this '$fname'-link, and try again."
+    mkdir $mydir
+fi
+
+if [ -h "$PWD/$mydir/$fname" ]
+then
+    echo "A symbolic link with the name '$fname' already exists in '$PWD/$mydir'. Please remove this '$fname'-link, and try again."
     exit
 fi
 
 # Search below ../CODE i.e for a source sketch to link to for the board's subfolder tree
-find "$HOME/$parent_boards_directory_name" -name "$fname" -exec ln -s '{}' "$fname" \;
-echo "Check that a symbolic link '$fname' has successfully been created in '$PWD'."
-
+find "$HOME/$parent_boards_directory_name" -name "$fname" -exec ln -s '{}' "$mydir/$fname" \;
+echo "Check that a symbolic link '$fname' has successfully been created in '$PWD/$mydir'."
 ```
 
 Move this file to the `~/.local/bin` folder, and make it executable:
@@ -181,7 +193,7 @@ Debian/Linux system includes a command called *link*, but `mylink` does the sear
 $ cd ~/Arduino/arduinoUno
 $ mylink blink.ino
  Check that a symbolic link blink.ino has successfully been created in '~/Arduino/arduinoUno'.
-$ ls -l
+$ ls -l blink
  blink.ino -> ../CODE/basic/blink/blink.ino
 ```
 If you run it without an argument, the command will ask for the name of the sketch.
@@ -189,6 +201,8 @@ If you run it without an argument, the command will ask for the name of the sket
 ## Final thoughts
 
 If you set Arduino `File->Preferences` to update libraries at start up, be mindful since you may overwrite the symbolic link to your customizations. In that case, re-create the symbolic link to `~/mymacros`. For planned changes, improvements, and known bugs, please visit the [Github issues tracker](https://github.com/berrak/My_Macros/issues).
+
+The device tree does not maintain the neat hierarchical organization below CODE. Thus, choosing meaningful file names when first saving the file in the CODE-tree is helpful. Another challenge is the regression testing of code written for multiple devices.
 
 ## Credits
 
