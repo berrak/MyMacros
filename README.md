@@ -12,11 +12,17 @@ Another advantage of this library is that it gives us development flexibility wh
 
 ## How to Install
 
+### First method
+
+For details on how to install libraries in the Arduino IDE, please see the [Arduino website](https://www.arduino.cc/en/Guide/Libraries). It is worthwhile reading.
+
+### Second method
+
 1. Navigate to the [Releases page](https://github.com/berrak/My_Macros/releases).
 1. Download the latest released ZIP-archive in `~/Arduino/libraries` or any other folder.
 1. Rename the file, i.e. remove *master* like this `My_Macros.zip`.
 1. In the Arduino IDE, navigate to `Sketch->Include Library->Add .ZIP Library...` and select the file.
-1. Arduino IDE will expand the ZIP-archive contents in the right location, i.e. `~/Arduino/libraries`.
+1. Arduino IDE will expand the ZIP-archive, but read more about Arduino's usage of libraries in the *First method*. 
 
 ## Examples
 
