@@ -1,8 +1,10 @@
 # Ignore list
 .git
-# project files
+# Project files
 .vscode
 .komodotools
 *.komodoproject
-#Other potential files
+# Other potential files
 *.zip
+# Test
+test/
