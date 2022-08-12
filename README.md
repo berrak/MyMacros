@@ -114,7 +114,7 @@ For example, the idea is to have one typical *Blink* sketch for all our developm
 ├── sensors
 └── usb
 ```
- One solution to `reduce the depth and still have useful symbolic links` is to adapt a sketch naming convention instead. For example, use the camel case naming strategy where the first parts repeat the above hierarchy. Thus the built-in `Blink.ino` is saved as `basicBlink.ino` directly below `CODE`.
+ Our best solution to **`reduce the depth and still have useful symbolic links`** is to adapt a sketch naming convention instead. For example, use the camel case naming strategy where the first parts repeat the above hierarchy. Thus the built-in `Blink.ino` is saved as **`basicBlink.ino`** direct below `CODE` but create first the directory **`basicBlink`** for the Arduino sketch.
 
 ## Add a symbolic link (manually) in the device tree to the code directory
 
