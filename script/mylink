@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# mylink - script to find and create a symbolic link to a source Arduino sketch
+# Author: Debinix Team (C). License GPL-3.0
+# Date: 2022-08-10
+#
+parent_boards_directory_name="Arduino/CODE"
+
+case $# in
+    0) echo -n "Give the name of the sketch, including '.ino': "
+    read fname;;
+    1) fname=$1
+    ;;
+    *) echo "Too many arguments given, aborting. Please correct and retry."
+    exit;;
+esac
+
+if echo "$fname" | grep -q "\.ino"; then
+  echo "Sketch '$fname'"
+  mydir=$( cut -d '.' -f 1 <<< "$fname" )
+else
+  echo "Missing '.ino' in the sketch name. Please correct and retry."
+  exit
+fi
+
+# Create a subdirectory for Arduino IDE
+if [ ! -d "$mydir" ]
+then
+    mkdir $mydir
+fi
+
+if [ -h "$PWD/$mydir/$fname" ]
+then
+    echo "A symbolic link with the name '$fname' already exists in '$PWD/$mydir'. Please remove this '$fname'-link, and try again."
+    exit
+fi
+
+# Search below ../CODE i.e for a source sketch to link to for the board's subfolder tree
+find "$HOME/$parent_boards_directory_name" -name "$fname" -exec ln -s '{}' "$mydir/$fname" \;
+echo "Check that a symbolic link '$fname' has successfully been created in '$PWD/$mydir'."
+

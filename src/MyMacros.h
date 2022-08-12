@@ -1,11 +1,12 @@
 /*
-*  My_Macros.h
-*  An Arduino library which allows grouping of macros for your unique collection of boards.
+*  MyMacros.h
+*  The Arduino library identifies your unique collection of development boards.
 *  Created by Debinix Team (C). Licensed under GPL-3.0.
 *  Date: 2022-08-10.
 */
 
-#pragma once
+#ifndef _MyMacros_h_
+#define _MyMacros_h_
 
 #include <Board_Identify.h>
 
@@ -171,3 +172,5 @@ namespace MyMacros {
     const char* mcu = "Unknown";
 #endif
 }
+
+#endif
