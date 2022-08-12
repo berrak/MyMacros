@@ -1,9 +1,9 @@
-[![GitHub license](https://img.shields.io/github/license/berrak/My_Macros.svg?logo=gnu&logoColor=ffffff)](https://github.com/berrak/My_Macros/blob/master/LICENSE)
-[![GitHub version](https://img.shields.io/github/release/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
-[![GitHub Release Date](https://img.shields.io/github/release-date/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
-[![GitHub stars](https://img.shields.io/github/stars/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/issues)
-[![Codacy grade](https://img.shields.io/codacy/grade/05e2e79ae90d4b9489689f918ad2ccb5.svg?logo=codacy&logoColor=ffffff)](https://www.codacy.com/app/berrak/My_Macros)
+[![GitHub license](https://img.shields.io/github/license/berrak/MyMacros.svg?logo=gnu&logoColor=ffffff)](https://github.com/berrak/My_Macros/blob/master/LICENSE)
+[![GitHub version](https://img.shields.io/github/release/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
+[![GitHub Release Date](https://img.shields.io/github/release-date/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
+[![GitHub stars](https://img.shields.io/github/stars/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/issues)
+[![Codacy grade](https://img.shields.io/codacy/grade/05e2e79ae90d4b9489689f918ad2ccb5.svg?logo=codacy&logoColor=ffffff)](https://www.codacy.com/app/berrak/MyMacros)
 
 # Arduino library MyMacros
 `MyMacros` library allows identifying boards that you own. The library maintains *personal macros* for your unique collection of boards. The existing Arduino library `Boards Identify` aims to identify many Arduino-compatible boards. This library, `MyMacros,` adds a separate header file with a *personal* list of boards in your possession.
