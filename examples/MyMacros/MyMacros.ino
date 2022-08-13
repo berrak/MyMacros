@@ -19,10 +19,10 @@
 void setup() {
 
     Serial.begin(BAUD_RATE);
+    /*
     Serial.println("==== BOARD IDENTIFY ====");
 
-    // BoardIdentify::type is a unique integer that will never be changed and so should maintain future compatibility.
-    // It is advised to use this for any logic. See https://github.com/MattFryer/Board_Identify
+    // BoardIdentify::type. See https://github.com/MattFryer/Board_Identify
     if (BoardIdentify::type == 2) {
     Serial.print("It is an Arduino Uno");
     } else {
@@ -30,41 +30,40 @@ void setup() {
     }
 
     delay(5000);
-
+*/
 }
 
 void loop() {
 
-for(;;) {
+    for(;;) {
 
-    // MyMacros uses the namespace 'MyMacros' to prevent variable name conflicts with other libraries.
+        // MyMacros uses the namespace 'MyMacros' to prevent variable name conflicts with other libraries.
+        Serial.println("==== MyMacros ====");
+        Serial.print("Board Type: ");
+        Serial.println(mymacro::type);
+        Serial.print("Board Make: ");
+        Serial.println(mymacro::make);
+        Serial.print("Board Model: ");
+        Serial.println(mymacro::model);
+        Serial.print("Board MCU: ");
+        Serial.println(mymacro::mcu);
+        Serial.println();
 
-    Serial.println("==== MYMACROS ====");
-    Serial.print("Board Type: ");
-    Serial.println(MyMacros::type);
-    Serial.print("Board Make: ");
-    Serial.println(MyMacros::make);
-    Serial.print("Board Model: ");
-    Serial.println(MyMacros::model);
-    Serial.print("Board MCU: ");
-    Serial.println(MyMacros::mcu);
-    Serial.println();
+        delay(5000);
+/*
+        // 'Board Identify' uses the namespace 'BoardIdentify' to prevent variable name conflicts with other libraries.
+        Serial.println("==== Board Identify ====");
+        Serial.print("Board Type: ");
+        Serial.println(BoardIdentify::type);
+        Serial.print("Board Make: ");
+        Serial.println(BoardIdentify::make);
+        Serial.print("Board Model: ");
+        Serial.println(BoardIdentify::model);
+        Serial.print("Board MCU: ");
+        Serial.println(BoardIdentify::mcu);
+        Serial.println();
 
-    delay(5000);
-
-    // 'Board Identify' uses the namespace 'BoardIdentify' to prevent variable name conflicts with other libraries.
-
-    Serial.println("==== BOARD IDENTIFY ====");
-    Serial.print("Board Type: ");
-    Serial.println(BoardIdentify::type);
-    Serial.print("Board Make: ");
-    Serial.println(BoardIdentify::make);
-    Serial.print("Board Model: ");
-    Serial.println(BoardIdentify::model);
-    Serial.print("Board MCU: ");
-    Serial.println(BoardIdentify::mcu);
-    Serial.println();
-
-    delay(5000);
+        delay(5000);
+*/
     }
 }
