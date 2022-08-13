@@ -4,15 +4,12 @@
 *  MyMacros and 'Board Identify' combination allows identification for many boards at run time.
 *  In addition, the MyMacros library maintains personal macros for your unique collection of boards.
 *  Created by Debinix Team (C). License GPL-3.0.
-*  Date: 2022-08-10.
+*  Date: 2022-08-13.
 */
 
 // Adding this line before the library will output a compile time identification.
 #define BOARD_IDENTIFY_WARNING
-// If warnings still don't display, ensure "File->Preferences->compiler warnings" is set to "Default" or "All".
-
-
-#include <My_Macros.h>
+#include <MyMacros.h>
 
 // BAUD_RATE is 115200 as defined in 'MyMacros.h'
 #ifndef BAUD_RATE
@@ -40,16 +37,6 @@ void loop() {
 
 for(;;) {
 
-    // What matched
-    if defined(ARDUINO_AVR_UNO) {
-        Serial.println("This was an Arduino Uno");
-    }
-
-
-
-
-
-    // Examples that use 'MyMacros.h'. Connect an ESP32->TinyPICO or STM32 BluePill found in 'MyMacros.h'.
     // MyMacros uses the namespace 'MyMacros' to prevent variable name conflicts with other libraries.
 
     Serial.println("==== MYMACROS ====");
@@ -65,7 +52,6 @@ for(;;) {
 
     delay(5000);
 
-    // Examples that use 'Board Identify'. Connect any common Arduino board.
     // 'Board Identify' uses the namespace 'BoardIdentify' to prevent variable name conflicts with other libraries.
 
     Serial.println("==== BOARD IDENTIFY ====");

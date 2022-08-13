@@ -7,144 +7,21 @@
 
 #pragma once
 
-#include <Board_Identify.h>
+// #include <Board_Identify.h>
 
 namespace MyMacros {
 
 #if defined(ARDUINO)
 
-// UNIVERSAL macros
+    // UNIVERSAL macros
+    #define BAUD_RATE   115200
+    #define BLINK_DELAY 125
 
-#define BAUD_RATE   115200
-#define BLINK_DELAY 125
-
-// SOME COMMON ARDUINO AVR
-
-    #if defined(ARDUINO_AVR_UNO)
-
-        // Only macros here
-
-        #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched defined(ARDUINO_AVR_UNO)"
-        #endif
-
-//ARDUINO SAMD
-
-    #elif defined(ARDUINO_SAMD_MKRWAN1300)
-
-        // Only macros here
-
-        #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched defined(ARDUINO_SAMD_MKRWAN1300)"
-        #endif
-
-// ESP8266
-
-    #elif defined(ARDUINO_ESP8266_WEMOS_D1MINI)
-
-        // Only macros here
-
-        #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched defined(ARDUINO_ESP8266_WEMOS_D1MINI)"
-        #endif
-
-// ESP32
-
-    #elif defined(ARDUINO_ESP32_DEV)
-
-        // Only macros here
-
-        #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched defined(ARDUINO_ESP32_DEV)"
-        #endif
-
-    #elif defined(ARDUINO_ESP32_THING)
-
-        // Only macros here
-
-        #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched defined(ARDUINO_ESP32_THING)"
-        #endif
-
-
-    #elif defined(ARDUINO_TINYPICO)
-
-        // Only macros here
-
-        const int type = 0;
-        const char* make = "Unexpected Maker";
-        const char* model = "TinyPICO";
-        const char* mcu = "ESP32";
-        #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Controller: ESP32 TinyPICO"
-            #warning "Matched defined(ARDUINO_TINYPICO)"
-        #endif
-
-// STM32 F411CEU6 - Black Pill
-
-    #elif defined(ARDUINO_BLACKPILL_F411CE)
-
-        // Only macros here
-        #ifndef LED_BUILTIN
-            #define LED_BUILTIN PC13
-        #endif
-
-        const int type = 0;
-        const char* make = "WeAct Studio";
-        const char* model = "BlackPill";
-        const char* mcu = "STM32F411CE";
-
-        #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Controller: STM32F411CE BlackPill"
-            #warning "Matched defined(ARDUINO_BLACKPILL_F411CE)"
-        #endif
-
-// STM32 F103Fx - Blue Pill variants
-
-    #elif defined(ARDUINO_BLUEPILL_F103C6) || defined(ARDUINO_BLUEPILL_F103C8) || defined(ARDUINO_BLUEPILL_F103CB)
-
-        // Only macros here
-        #ifndef LED_BUILTIN
-            #define LED_BUILTIN PC13
-        #endif
-
-        const int type = 0;
-        const char* make = "Generic";
-        const char* model = "BluePill";
-        const char* mcu = "STM32F103x";
-
-        #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Controller: STM32F103x BluePill"
-            #warning "Matched defined(ARDUINO_BLUEPILL_F103C6) or"
-            #warning "Matched defined(ARDUINO_BLUEPILL_F103C8) or"
-            #warning "Matched defined(ARDUINO_BLUEPILL_F103CB)"
-        #endif
-
-// STM32 G031 - our new development boards
-
-    #elif defined(ARDUINO_D1MINI_G031F6)
-
-        // Only macros here
-        #ifndef LED_BUILTIN
-            #define LED_BUILTIN PB6
-        #endif
-
-        const int type = 0;
-        const char* make = "Debinix Team";
-        const char* model = "D1-mini G031Fx";
-        const char* mcu = "STM32G031F6";
-        #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Controller: D1-mini G031F6"
-            #warning "Matched defined(ARDUINO_D1MINI_G031F6)"
-        #endif
-
-    #elif defined(ARDUINO_D1MINI_G031F8)
-
+    #if defined(ARDUINO_D1MINI_G031F8)
         // Only new macros here
         #ifndef LED_BUILTIN
             #define LED_BUILTIN PB6
         #endif
-
         const int type = 0;
         const char* make = "Debinix Team";
         const char* model = "D1-mini G031Fx";
@@ -153,7 +30,6 @@ namespace MyMacros {
             #warning "Controller: D1-mini G031F8"
             #warning "Matched defined(ARDUINO_D1MINI_G031F8)"
         #endif
-
     #else
         const int type = 0;
         const char* make = "Unknown";
