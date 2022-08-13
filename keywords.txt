@@ -1,5 +1,5 @@
 #######################################
-# BOARD IFENTIFY
+# MyMacros
 # Syntax Coloring Map
 #######################################
 
@@ -12,12 +12,13 @@
 # Classes & Namespaces (KEYWORD1)
 #######################################
 
-MyMacros        KEYWORD1
+mymacro KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
+printlnMatch    KEYWORD2
 type	KEYWORD2
 make	KEYWORD2
 model	KEYWORD2

@@ -1,7 +1,7 @@
 /*
 *  MyMacros.ino
 *
-*  MyMacros and 'Board Identify' combination allows identification for many boards at run time.
+*  MyMacros and 'Board Identify' library combination identifies 100+ boards at compile and run time.
 *  In addition, the MyMacros library maintains personal macros for your unique collection of boards.
 *  Created by Debinix Team (C). License GPL-3.0.
 *  Date: 2022-08-13.
@@ -9,9 +9,11 @@
 
 // Adding this line before the library will output compile time identification.
 #define BOARD_IDENTIFY_WARNING
-#include <MyMacros.h>    // includes all boards from Board Identify library.
 
-// BAUD_RATE is 115200, defined in 'MyMacros.h'
+#include <MyMacros.h>   // This add all available 100+ boards from Board Identify.
+#include "macrofn.h"    // Add additional personal macro function constructs.
+
+// BAUD_RATE is default to 9600, defined in 'MyMacros.h'
 #ifndef BAUD_RATE
 #define BAUD_RATE 9600
 #endif
@@ -27,9 +29,13 @@ void loop() {
 
     for(;;) {
 
-        // MyMacros uses the namespace 'mymacro' to prevent 
-        // variable name conflicts with other libraries.
         Serial.println("==== MyMacros ====");
+        Serial.print("Matching board define: ");
+        // from #include "macrofn.h", in working directory.
+        printlnMatch(); 
+
+        // MyMacros uses namespace 'mymacro' 
+        // Your unique collection of boards.
         Serial.print("Board Type: ");
         Serial.println(mymacro::type);
         Serial.print("Board Make: ");
@@ -42,7 +48,8 @@ void loop() {
 
         delay(3000);
 
-        // Mix in identification from Board Identify, with its own namespace.
+        // Use namespace 'BoardIdentity'
+        // Identify 100+ boards from Board Identify library.
         Serial.println("==== Board Identify ====");
         Serial.print("Board Type: ");
         Serial.println(BoardIdentify::type);

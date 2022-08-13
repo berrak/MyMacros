@@ -11,13 +11,12 @@
 
 namespace mymacro {
 
-    #if defined(ARDUINO)
+    // #if defined(ARDUINO)
 
         // My Universal applied macros
-            #define BAUD_RATE   115200
+            #define BAUD_RATE   9600
             #define BLINK_DELAY 125
 
-        // ARDUINO UNO MUST BE IN ITS OWN IF-ENDIF-CLAUSE
 
             #if defined(ARDUINO_AVR_UNO)
 
@@ -27,11 +26,9 @@ namespace mymacro {
                     #warning "Matched defined(ARDUINO_AVR_UNO)"
                 #endif
 
-            #endif
-
         // ARDUINO SAMD
 
-            #if defined(ARDUINO_SAMD_MKRWAN1300)
+            #elif defined(ARDUINO_SAMD_MKRWAN1300)
 
                 // Only macros here
 
@@ -165,13 +162,9 @@ namespace mymacro {
                 #endif
             #endif
 
-        #else
-
-            const int type = 0;
-            const char* make = "Unknown";
-            const char* model = "Unknown";
-            const char* mcu = "Unknown";
+    const int type = 0;
+    const char* make = "Unknown";
+    const char* model = "Unknown";
+    const char* mcu = "Unknown";
         
-        #endif
-
 }
