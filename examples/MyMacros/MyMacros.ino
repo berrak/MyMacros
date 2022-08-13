@@ -7,11 +7,11 @@
 *  Date: 2022-08-13.
 */
 
-// Adding this line before the library will output a compile time identification.
+// Adding this line before the library will output compile time identification.
 #define BOARD_IDENTIFY_WARNING
-#include <MyMacros.h>
+#include <MyMacros.h>    // includes all boards from Board Identify library.
 
-// BAUD_RATE is 115200 as defined in 'MyMacros.h'
+// BAUD_RATE is 115200, defined in 'MyMacros.h'
 #ifndef BAUD_RATE
 #define BAUD_RATE 9600
 #endif
@@ -19,25 +19,16 @@
 void setup() {
 
     Serial.begin(BAUD_RATE);
-    /*
-    Serial.println("==== BOARD IDENTIFY ====");
-
-    // BoardIdentify::type. See https://github.com/MattFryer/Board_Identify
-    if (BoardIdentify::type == 2) {
-    Serial.print("It is an Arduino Uno");
-    } else {
-    Serial.print("It is NOT an Arduino Uno");
-    }
-
-    delay(5000);
-*/
+    Serial.println("Setup complete.");
+    delay(2000);
 }
 
 void loop() {
 
     for(;;) {
 
-        // MyMacros uses the namespace 'MyMacros' to prevent variable name conflicts with other libraries.
+        // MyMacros uses the namespace 'mymacro' to prevent 
+        // variable name conflicts with other libraries.
         Serial.println("==== MyMacros ====");
         Serial.print("Board Type: ");
         Serial.println(mymacro::type);
@@ -49,9 +40,9 @@ void loop() {
         Serial.println(mymacro::mcu);
         Serial.println();
 
-        delay(5000);
-/*
-        // 'Board Identify' uses the namespace 'BoardIdentify' to prevent variable name conflicts with other libraries.
+        delay(3000);
+
+        // Mix in identification from Board Identify, with its own namespace.
         Serial.println("==== Board Identify ====");
         Serial.print("Board Type: ");
         Serial.println(BoardIdentify::type);
@@ -63,7 +54,7 @@ void loop() {
         Serial.println(BoardIdentify::mcu);
         Serial.println();
 
-        delay(5000);
-*/
+        delay(3000);
+
     }
 }
