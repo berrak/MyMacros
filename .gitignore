@@ -1,10 +1,15 @@
-#Ignore list
+# Git ignore list
 .git
-# project files
+
+# Project files
 .vscode
 .komodotools
 *.komodoproject
+
 # Other potential files
 *.zip
+
+# Build and test
 Makefile
 test/
+build/

@@ -1,8 +1,8 @@
 /*
-*  My_Macros.ino
+*  MyMacros.ino
 *
-*  'My Macros' and 'Board Identify' combination allows identification for many boards at run time.
-*  In addition, the 'My Macros' library maintains personal macros for your unique collection of boards.
+*  MyMacros and 'Board Identify' combination allows identification for many boards at run time.
+*  In addition, the MyMacros library maintains personal macros for your unique collection of boards.
 *  Created by Debinix Team (C). License GPL-3.0.
 *  Date: 2022-08-10.
 */
@@ -11,9 +11,10 @@
 #define BOARD_IDENTIFY_WARNING
 // If warnings still don't display, ensure "File->Preferences->compiler warnings" is set to "Default" or "All".
 
+
 #include <My_Macros.h>
 
-// BAUD_RATE is 115200 as defined in 'My Macros'
+// BAUD_RATE is 115200 as defined in 'MyMacros.h'
 #ifndef BAUD_RATE
 #define BAUD_RATE 9600
 #endif
@@ -39,10 +40,19 @@ void loop() {
 
 for(;;) {
 
-    // Examples that use 'My Macros'. Connect an ESP32->TinyPICO or STM32 BluePill found in 'My_Macros.h'.
-    // 'My Macros' uses the namespace 'MyMacros' to prevent variable name conflicts with other libraries.
+    // What matched
+    if defined(ARDUINO_AVR_UNO) {
+        Serial.println("This was an Arduino Uno");
+    }
 
-    Serial.println("==== MY MACROS ====");
+
+
+
+
+    // Examples that use 'MyMacros.h'. Connect an ESP32->TinyPICO or STM32 BluePill found in 'MyMacros.h'.
+    // MyMacros uses the namespace 'MyMacros' to prevent variable name conflicts with other libraries.
+
+    Serial.println("==== MYMACROS ====");
     Serial.print("Board Type: ");
     Serial.println(MyMacros::type);
     Serial.print("Board Make: ");

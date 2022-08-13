@@ -5,8 +5,7 @@
 *  Date: 2022-08-10.
 */
 
-#ifndef _MyMacros_h_
-#define _MyMacros_h_
+#pragma once
 
 #include <Board_Identify.h>
 
@@ -74,7 +73,7 @@ namespace MyMacros {
 
         const int type = 0;
         const char* make = "Unexpected Maker";
-        const char* model = "ESP32 TinyPICO";
+        const char* model = "TinyPICO";
         const char* mcu = "ESP32";
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: ESP32 TinyPICO"
@@ -92,7 +91,7 @@ namespace MyMacros {
 
         const int type = 0;
         const char* make = "WeAct Studio";
-        const char* model = "STM32F411CEU BlackPill";
+        const char* model = "BlackPill";
         const char* mcu = "STM32F411CE";
 
         #if defined(BOARD_IDENTIFY_WARNING)
@@ -110,9 +109,9 @@ namespace MyMacros {
         #endif
 
         const int type = 0;
-        const char* make = "Generic BluePill";
-        const char* model = "STM32F103x BluePill";
-        const char* mcu = "F103x";
+        const char* make = "Generic";
+        const char* model = "BluePill";
+        const char* mcu = "STM32F103x";
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: STM32F103x BluePill"
@@ -132,8 +131,8 @@ namespace MyMacros {
 
         const int type = 0;
         const char* make = "Debinix Team";
-        const char* model = "D1-mini G031F6";
-        const char* mcu = "G031F6";
+        const char* model = "D1-mini G031Fx";
+        const char* mcu = "STM32G031F6";
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: D1-mini G031F6"
             #warning "Matched defined(ARDUINO_D1MINI_G031F6)"
@@ -148,8 +147,8 @@ namespace MyMacros {
 
         const int type = 0;
         const char* make = "Debinix Team";
-        const char* model = "D1-mini G031F8";
-        const char* mcu = "G031F8";
+        const char* model = "D1-mini G031Fx";
+        const char* mcu = "STM32G031F8";
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: D1-mini G031F8"
             #warning "Matched defined(ARDUINO_D1MINI_G031F8)"
@@ -172,5 +171,3 @@ namespace MyMacros {
     const char* mcu = "Unknown";
 #endif
 }
-
-#endif
