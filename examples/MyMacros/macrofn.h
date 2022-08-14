@@ -3,7 +3,7 @@
 *
 *  Add arbitary useful macros to your collection.
 *  Created by Debinix Team (C). License GPL-3.0.
-*  Date: 2022-08-16.
+*  Date: 2022-08-14.
 */
 
 // printlnMatch() print matching define in MyMacros.h to Serial port.

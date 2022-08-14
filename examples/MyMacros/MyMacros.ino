@@ -1,6 +1,14 @@
+/*
+*  MyMacros.ino
+*  Demonstrates backward compatibilty (Board Identify) and new extensability.
+*  Created by Debinix Team (C). Licensed under GPL-3.0.
+*  Date: 2022-08-14.
+*/
+
 // Adding this line before the library will output compile time identification.
 #define BOARD_IDENTIFY_WARNING
 #include <MyMacros.h>   // This add all available 100+ boards from Board Identify.
+#include "macrofn.h"    // Add your macro function constructs.
 
 // declare a struct to access its members
 struct board myBoard;
@@ -19,6 +27,9 @@ void setup() {
 
 void loop() {
 
+    // Use members in 'struct board' to access
+    // identity information from 'MyMacros.h'.
+    // Adds the personal collection of boards.
     Serial.println("==== MyMacros ===="); 
     Serial.print("Board Type: ");
     Serial.println(myBoard.type);  
