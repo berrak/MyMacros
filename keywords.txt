@@ -7,12 +7,12 @@
 # Datatypes (DATA_TYPE)
 #######################################
 
+struct board   DATA_TYPE
 
 #######################################
 # Classes & Namespaces (KEYWORD1)
 #######################################
 
-mymacro KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)

@@ -10,7 +10,7 @@
 #include <MyMacros.h>   // This add all available 100+ boards from Board Identify.
 #include "macrofn.h"    // Add your macro function constructs.
 
-// declare a struct to access its members
+// Define a structure variable
 struct board myBoard;
 
 void setup() {
