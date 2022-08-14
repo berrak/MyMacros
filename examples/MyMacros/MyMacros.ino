@@ -9,9 +9,9 @@
 
 // Adding this line before the library will output compile time identification.
 #define BOARD_IDENTIFY_WARNING
-
 #include <MyMacros.h>   // This add all available 100+ boards from Board Identify.
 #include "macrofn.h"    // Add additional personal macro function constructs.
+//using namespace macro;
 
 // BAUD_RATE is default to 9600, defined in 'MyMacros.h'
 #ifndef BAUD_RATE
@@ -34,16 +34,16 @@ void loop() {
         // from #include "macrofn.h", in working directory.
         printlnMatch(); 
 
-        // MyMacros uses namespace 'mymacro' 
+        // MyMacros uses namespace 'macro' 
         // Your unique collection of boards.
         Serial.print("Board Type: ");
-        Serial.println(mymacro::type);
+        Serial.println(macro::type);
         Serial.print("Board Make: ");
-        Serial.println(mymacro::make);
+        Serial.println(macro::make);
         Serial.print("Board Model: ");
-        Serial.println(mymacro::model);
+        Serial.println(macro::model);
         Serial.print("Board MCU: ");
-        Serial.println(mymacro::mcu);
+        Serial.println(macro::mcu);
         Serial.println();
 
         delay(3000);

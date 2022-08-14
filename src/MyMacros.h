@@ -5,13 +5,20 @@
 *  Date: 2022-08-13.
 */
 
-#pragma once
-
 #include <Board_Identify.h>
 
-namespace mymacro {
+#pragma once
 
-    // #if defined(ARDUINO)
+namespace macro {
+
+    int type = 0;
+    char* make = "Unknown";
+    char* model = "Unknown";
+    char* mcu = "Unknown";
+
+}
+
+    #if defined(ARDUINO)
 
         // My Universal applied macros
             #define BAUD_RATE   9600
@@ -70,10 +77,10 @@ namespace mymacro {
 
                 // Only macros here
 
-                const int type = 0;
-                const char* make = "Unexpected Maker";
-                const char* model = "TinyPICO";
-                const char* mcu = "ESP32";
+                macro::type = 0;
+                macro::make = "Unexpected Maker";
+                macro::model = "TinyPICO";
+                macro::mcu = "ESP32";
                 #if defined(BOARD_IDENTIFY_WARNING)
                     #warning "Controller: ESP32 TinyPICO"
                     #warning "Matched defined(ARDUINO_TINYPICO)"
@@ -88,10 +95,10 @@ namespace mymacro {
                     #define LED_BUILTIN PC13
                 #endif
 
-                const int type = 0;
-                const char* make = "WeAct Studio";
-                const char* model = "BlackPill";
-                const char* mcu = "STM32F411CE";
+                macro::type = 0;
+                macro::make = "WeAct Studio";
+                macro::model = "BlackPill";
+                macro::mcu = "STM32F411CE";
 
                 #if defined(BOARD_IDENTIFY_WARNING)
                     #warning "Controller: STM32F411CE BlackPill"
@@ -107,10 +114,10 @@ namespace mymacro {
                     #define LED_BUILTIN PC13
                 #endif
 
-                const int type = 0;
-                const char* make = "Generic";
-                const char* model = "BluePill";
-                const char* mcu = "STM32F103x";
+                macro::type = 0;
+                macro::make = "Generic";
+                macro::model = "BluePill";
+                macro::mcu = "STM32F103x";
 
                 #if defined(BOARD_IDENTIFY_WARNING)
                     #warning "Controller: STM32F103x BluePill"
@@ -126,10 +133,10 @@ namespace mymacro {
                     #define LED_BUILTIN PB6
                 #endif
 
-                const int type = 0;
-                const char* make = "Debinix Team";
-                const char* model = "D1-mini G031Fx";
-                const char* mcu = "STM32G031F6";
+                macro::type = 0;
+                macro::make = "Debinix Team";
+                macro::model = "D1-mini G031Fx";
+                macro::mcu = "STM32G031F6";
                 #if defined(BOARD_IDENTIFY_WARNING)
                     #warning "Controller: D1-mini G031F6"
                     #warning "Matched defined(ARDUINO_D1MINI_G031F6)"
@@ -142,29 +149,32 @@ namespace mymacro {
                 #ifndef LED_BUILTIN
                     #define LED_BUILTIN PB6
                 #endif
-                const int type = 0;
-                const char* make = "Debinix Team";
-                const char* model = "D1-mini G031Fx";
-                const char* mcu = "STM32G031F8";
+                macro::type = 0;
+                macro::make = "Debinix Team";
+                macro::model = "D1-mini G031Fx";
+                macro::mcu = "STM32G031F8";
 
                 #if defined(BOARD_IDENTIFY_WARNING)
                     #warning "Controller: D1-mini G031F8"
-                    //#warning "Matched defined(ARDUINO_D1MINI_G031F8)"
+                    #warning "Matched defined(ARDUINO_D1MINI_G031F8)"
                 #endif
+            
             #else
-                const int type = 0;
-                const char* make = "Unknown";
-                const char* model = "Unknown";
-                const char* mcu = "Unknown";
+                macro::type = 0;
+                macro::make = "Unknown";
+                macro::model = "Unknown";
+                macro::mcu = "Unknown";
 
                 #if defined(BOARD_IDENTIFY_WARNING)
                     #warning "Controller: Unknown Controller Model"
                 #endif
             #endif
 
-    const int type = 0;
-    const char* make = "Unknown";
-    const char* model = "Unknown";
-    const char* mcu = "Unknown";
-        
-}
+    #else
+        macro::type = 0;
+        macro::make = "Unknown";
+        macro::model = "Unknown";
+        macro::mcu = "Unknown";
+    #endif
+
+//}
