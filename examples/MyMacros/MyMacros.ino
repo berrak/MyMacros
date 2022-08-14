@@ -22,6 +22,8 @@ void setup() {
   Serial.print("Matching board define: ");
   // see "macrofn.h", in working directory.
   printlnMatch(); 
+  Serial.print("Global 'match' variable is assigned: ");
+  Serial.println(match);
   delay(3000);
 }
 
