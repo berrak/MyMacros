@@ -6,20 +6,52 @@
 [![Codacy grade](https://img.shields.io/codacy/grade/05e2e79ae90d4b9489689f918ad2ccb5.svg?logo=codacy&logoColor=ffffff)](https://www.codacy.com/app/berrak/MyMacros)
 
 # Arduino library MyMacros
-`MyMacros` library allows identifying boards that you own. The library maintains *personal macros* for your unique collection of boards. The existing Arduino library `Boards Identify` aims to identify many Arduino-compatible boards. This library, `MyMacros,` adds a separate header file with a *personal* list of boards in your possession.
+`MyMacros` library allows identifying boards that you own. The library maintains *personal macros* for your unique collection of boards. The existing Arduino library [Board Identify](https://github.com/MattFryer/Board_Identify) aims to identify many Arduino-compatible boards. This library, `MyMacros`, adds a separate header file with a *personal* list of boards in your possession.
 
 Another advantage of this library is that it gives us development flexibility when working in parallel with various boards. Using `symbolic links` for specific boards minimizes code duplication. The solution discussed can be implemented on `Linux` and `Mac OS X`.
 
-## How to Install
+## Why use this library?
+If you want to write code or libraries for specific platforms or a range of boards, it would be best if you had a way to tell them apart. Likely, that code cannot be made universal. Instead, you have to include various snippets depending on a particular board. MyMacros-library suggests using pre-processor defines for this purpose. Within the Arduino ecosystem, many kinds of definitions exist. The Library Board Identify contains over 100+ boards, but this list will never be complete considering the ever-increasing number of new development boards. In the 'MyMacros.h' header file, you can:
+- extend existing board information with newly defined macros.
+- add any new data or defines for your development boards
+- add non-existent boards that are not in 'Board_Identify.h'
 
-1. Navigate to the [Releases page](https://github.com/berrak/My_Macros/releases).
-1. Download the latest released ZIP-archive in `~/Arduino/libraries`.
-1. Unzip the archive.
-1. Rename the new directory. Remove *version-code*, or *master* in the name like this for `MyMacros`.
-1. Restart Arduino IDE.
-1. In Arduino IDE scroll down the long list below `Sketch->Include Library` and find `MyMacros`.
+## How to use c++ preprocessor directives?
+Here are examples of the variation in modifying code included with the help of pre-processor directives.
+```cpp
+#if defined(ARDUINO_D1MINI_G031F6) || defined(ARDUINO_D1MINI_G031F8)
+ //             sda, scl
+ TwoWire Wire2(D21,D20);
+ Adafruit_SH1106G display = Adafruit_SH1106G(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire2, OLED_RESET);
+#else
+  Adafruit_SH1106G display = Adafruit_SH1106G(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+#endif
+```
+or
+```cpp
+#ifdef ARDUINO_TINYPICO
+#include <TinyPICO.h>
+TinyPICO tp = TinyPICO();
+#endif
+```
+## Where to find it?
+There are several ways to get the required definitions. Arduino uses the label `build.board` that can be found in the `boards.txt` as, e.g. `tinypico.build.board=TINYPICO`. Pre-pend 'ARDUINO' to`ARDUINO_TINYPICO` for library usage. But there are alternatives like adding `#define BOARD_IDENTIFY_WARNING` before including this library. Compiling the code, a compiler warning with the information, among other information, is sent to `stdout`.
+```cpp
+#define BOARD_IDENTIFY_WARNING
+#include <MyMacros.h>
+```
+Ensure that `File->Preferences->compiler warnings` is set to *Default* or *All*. It will likely show up quickly in the beginning, in red - as a warning - of all compiled messages fast scrolling down your eyes.
 
-For all the details on how to install libraries in the Arduino IDE, please see the [Arduino website](https://www.arduino.cc/en/Guide/Libraries). It is worthwhile reading.
+In addition, the output from `MyMacros.h` includes the matching define, for example, `Matched defined(ARDUINO_AVR_UNO)` to remind ourselves what define causes the outcome. These definitions are very useful in the code, and based on that, include, exclude code, or add some macros.
+
+An alternative at run-time. With 'printlnMatch()' macro this information is sent to Serial-port. Yet another alternative is to access the global variable `char *match`.
+```cpp
+Serial.begin(9600);
+Serial.print("Matching board define: ");
+printlnMatch();
+// or use global
+Serial.println(match);
+```
 
 ## Examples
 
@@ -29,11 +61,11 @@ Firstly, you must include the library in your sketch:
 ```cpp
 #include <MyMacros.h>
 ```
-The library expands on `Boards_Identify.h` capabilities, and pulls in the `Board Identify` library as a dependence. This is strictly not required.
+The library expands on `Boards_Identify.h` capabilities and pulls in the `Board Identify` library with 100+ boards as a dependence.
 
 ## Customizing and protecting your macros
 
-The `MyMacros.h` is installed in `~/Arduino/libraries/MyMacros/src/`. Use a local copy to avoid this file being overwritten by Arduino when the library updates. Protect this file and move this to `~/mymacros.` Create a symbolic link to this location. When the library file eventually is overwritten, re-create the link again.
+The `MyMacros.h` is installed in `~/Arduino/libraries/MyMacros/src/`. Use a local copy to avoid this file being overwritten by Arduino when the library updates. Protect this file and move this to `~/mymacros.` Create a symbolic link to this location. When the header file eventually is overwritten, re-create the link again.
 
 ```
 mkdir ~/mymacros
@@ -46,41 +78,34 @@ $ ls -l
 ```
 Arduino IDE will use your file that was moved to `~/mymacros`.
 
-## Compile time identification
+## Usage
 
-To get a compile-time warning, add this line, before the line `#include <MyMacros.h>`.:
-```cpp
-#define BOARD_IDENTIFY_WARNING
-```
-Ensure that `File->Preferences->compiler warnings` is set to *Default* or *All*. It will likely show up quickly in the beginning, in red - as a warning - of all compiled messages fast scrolling down your eyes.
-
-In addition, the output from `MyMacros.h` includes the matching define, for example, `Matched defined(ARDUINO_AVR_UNO)` to remind ourselves what define causes the outcome. These definitions are very useful in the code, and based on that, include, exclude code, or add some macros.
-
-## Add a new Arduino board identification
-
-Being able to output board information to the screen or logs is generally useful. We are indeed working with the right board! This is identical to [Board Identify](https://github.com/MattFryer/Board_Identify) usage.
-
-`MyMacros` library uses the namespace `MyMacros` to prevent conflicts with other libraries. You can therefore access the personal list of a board like so. Information about how Arduino uses the label `build.board` can be found in the `boards.txt` as, e.g. `tinypico.build.board=TINYPICO`. Enter `ARDUINO_TINYPICO` for the `define` in `MyMacros.h` to match the new Arduino board.
+`MyMacros` library uses the `struct board` to access defined values. You can therefore access the personal list of a board like this. 
 
 ```cpp
-Serial.print("Board Make: ");
-Serial.println(MyMacros::make);
-Serial.print("Board Model: ");
-Serial.println(MyMacros::model);
-Serial.print("Board MCU: ");
-Serial.println(MyMacros::mcu);
-```
-`MyMacros` does not use the unique numerical `type` value. Set this value to `0` in the `MyMacros.h`. Note that if the board already exists in `Boards_Identify.h`, you must use that library-defined namespace `BoardsIdentify` like so.
-```cpp
+struct board MyBoard;
+Serial.println("==== MyMacros ===="); 
 Serial.print("Board Type: ");
-Serial.println(BoardIdentify::type);
+Serial.println(myBoard.type); 
 Serial.print("Board Make: ");
-Serial.println(BoardsIdentify::make);
+Serial.println(MyBoard.make);
 Serial.print("Board Model: ");
-Serial.println(BoardsIdentify::model);
+Serial.println(MyBoard.model);
 Serial.print("Board MCU: ");
-Serial.println(BoardsIdentify::mcu);
+Serial.println(MyBoard.mcu);
 ```
+This Library automatically use data that already exists in `Boards_Identify.h`. 
+
+## How to Install
+
+1. Navigate to the [Releases page](https://github.com/berrak/My_Macros/releases).
+1. Download the latest released ZIP-archive in `~/Arduino/libraries`.
+1. Unzip the archive.
+1. Rename the new directory. Remove *version-code*, or *master* in the name like this for `MyMacros`.
+1. Restart Arduino IDE.
+1. In Arduino IDE scroll down the long list below `Sketch->Include Library` and find `MyMacros`.
+
+For all the details on how to install libraries in the Arduino IDE, please see the [Arduino website](https://www.arduino.cc/en/Guide/Libraries). It is worthwhile reading.
 
 # Reduce code duplication
 
@@ -154,7 +179,7 @@ Open an editor and copy the content below. This file is also included in the lib
 #
 # mylink - script to find and create a symbolic link to a source Arduino sketch
 # Author: Debinix Team (C). License GPL-3.0
-# Date: 2022-08-10
+# Date: 2022-08-14.
 #
 parent_boards_directory_name="Arduino/CODE"
 
