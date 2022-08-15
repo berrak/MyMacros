@@ -63,6 +63,35 @@ Firstly, you must include the library in your sketch:
 ```
 The library expands on `Boards_Identify.h` capabilities and pulls in the `Board Identify` library with 100+ boards as a dependence.
 
+## Usage
+
+`MyMacros` library uses the `struct board` to access defined values. You can therefore access the personal list of a board like this. 
+
+```cpp
+struct board myBoard;
+Serial.println("==== MyMacros ===="); 
+Serial.print("Board Type: ");
+Serial.println(myBoard.type); 
+Serial.print("Board Make: ");
+Serial.println(myBoard.make);
+Serial.print("Board Model: ");
+Serial.println(myBoard.model);
+Serial.print("Board MCU: ");
+Serial.println(myBoard.mcu);
+```
+This Library automatically use data that already exists in `Boards_Identify.h`. 
+
+## How to Install
+
+1. Navigate to the [Releases page](https://github.com/berrak/My_Macros/releases).
+1. Download the latest released ZIP-archive in `~/Arduino/libraries`.
+1. Unzip the archive.
+1. Rename the new directory. Remove *version-code*, or *master* in the name like this for `MyMacros`.
+1. Restart Arduino IDE.
+1. In Arduino IDE scroll down the long list below `Sketch->Include Library` and find `MyMacros`.
+
+For all the details on how to install libraries in the Arduino IDE, please see the [Arduino website](https://www.arduino.cc/en/Guide/Libraries). It is worthwhile reading.
+
 ## Customizing and protecting your macros
 
 The `MyMacros.h` is installed in `~/Arduino/libraries/MyMacros/src/`. Use a local copy to avoid this file being overwritten by Arduino when the library updates. Protect this file and move this to `~/mymacros.` Create a symbolic link to this location. When the header file eventually is overwritten, re-create the link again.
@@ -77,35 +106,6 @@ $ ls -l
  MyMacros.h -> /home/bekr/mymacros/MyMacros.h
 ```
 Arduino IDE will use your file that was moved to `~/mymacros`.
-
-## Usage
-
-`MyMacros` library uses the `struct board` to access defined values. You can therefore access the personal list of a board like this. 
-
-```cpp
-struct board MyBoard;
-Serial.println("==== MyMacros ===="); 
-Serial.print("Board Type: ");
-Serial.println(myBoard.type); 
-Serial.print("Board Make: ");
-Serial.println(MyBoard.make);
-Serial.print("Board Model: ");
-Serial.println(MyBoard.model);
-Serial.print("Board MCU: ");
-Serial.println(MyBoard.mcu);
-```
-This Library automatically use data that already exists in `Boards_Identify.h`. 
-
-## How to Install
-
-1. Navigate to the [Releases page](https://github.com/berrak/My_Macros/releases).
-1. Download the latest released ZIP-archive in `~/Arduino/libraries`.
-1. Unzip the archive.
-1. Rename the new directory. Remove *version-code*, or *master* in the name like this for `MyMacros`.
-1. Restart Arduino IDE.
-1. In Arduino IDE scroll down the long list below `Sketch->Include Library` and find `MyMacros`.
-
-For all the details on how to install libraries in the Arduino IDE, please see the [Arduino website](https://www.arduino.cc/en/Guide/Libraries). It is worthwhile reading.
 
 # Reduce code duplication
 
