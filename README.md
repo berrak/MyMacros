@@ -116,10 +116,10 @@ It's probably a good idea to update your sketch folder in `File-> Preferences` w
 ```
 ~/Arduino
 ├── CODE
-├── D1miniESP8266
-├── ESP32TinyPICO
+├── ESP8266
+├── TinyPICO
 ├── libraries
-├── STM32G031Fx
+├── STM32G0
 └── Uno
 
 ```
@@ -145,7 +145,7 @@ For example, the idea is to have one typical *Blink* sketch for all our developm
 
 Change the folder to one of the development boards and its main directory and create the link to the familiar `basicBlink.ino`.
 ```
-$ cd ~/Arduino/STM32G031Fx
+$ cd ~/Arduino/STM32G0
 $ mkdir basicBlink
 $ cd basicBlink
 $ ln -s ../../CODE/basicBlink/basicBlink.ino basicBlink.ino
@@ -156,7 +156,7 @@ We are working in this particular development board directory, but we are editin
 
 Change to another development board folder, the main directory, and create a second link to the common `basicBlink.ino`.
 ```
-$ cd ~/Arduino/D1miniESP8266
+$ cd ~/Arduino/ESP8266
 $ mkdir basicBlink
 $ cd basicBlink
 $ ln -s ../../CODE/basicBlink/basicBlink.ino basicBlink.ino
@@ -166,13 +166,20 @@ $ ls -l
 The above steps are somewhat tedious, but the script `mylink` below becomes effortless.
 This concept reduces the clutter of files, with fewer duplicates in the file system, for files essentially performing the same task.
 
+## Adding a new architecture
+
+Code links are related to the above directories. So instead of creating any symbolic links, create a new directory `rp2040` parallel to `CODE` and copy all the contents from example `Uno` into this new architecture folder.
+```
+cd ~/CODE
+mkdir rp2040
+cp -r Uno/* rp2040/
+```
+Folders are insensitive to later changes, like, for example, `rp2040` to `RPI-rp2040`, and the links still work as before.
+
 ## Automation of link creation
 
 Now we will create a command script called `mylink`. Run this in the development board directory, and this makes a symbolic link.
-
-## Create the bash command script
-
-Open an editor and copy the content below. This file is also included in the library in the `script` folder.
+Open an editor and copy the script content below. This file is also included in the library in the `script` folder.
 
 ```bash
 #!/bin/bash
