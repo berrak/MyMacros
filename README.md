@@ -8,7 +8,7 @@
 # Arduino library MyMacros
 `MyMacros` library allows identifying boards that you own. The library maintains *personal macros* for your unique collection of boards. The existing Arduino library [Board Identify](https://github.com/MattFryer/Board_Identify) aims to identify many Arduino-compatible boards. This library, `MyMacros`, adds a separate header file with a *personal* list of boards in your possession.
 
-Another advantage of this library is that it gives us development flexibility when working in parallel with various boards. Using `symbolic links` for specific boards minimizes code duplication. The solution discussed can be implemented on `Linux` and `Mac OS X`.
+Another advantage of this library is that it gives us development flexibility when working in parallel with various boards. Using `symbolic links` for specific boards [minimizes code duplication](#reduce-code-duplication). The solution discussed can be implemented on `Linux` and `Mac OS X`.
 
 ## Why use this library?
 If you want to write code or libraries for specific platforms or a range of boards, it would be best if you had a way to tell them apart. Likely, that code cannot be made universal. Instead, you have to include various snippets depending on a particular board. MyMacros-library suggests using pre-processor defines for this purpose. Within the Arduino ecosystem, many kinds of definitions exist. The Library Board Identify contains over 100+ boards, but this list will never be complete considering the ever-increasing number of new development boards. In the 'MyMacros.h' header file, you can:
@@ -139,7 +139,7 @@ For example, the idea is to have one typical *Blink* sketch for all our developm
 ├── sensors
 └── usb
 ```
- Our best solution to **`reduce the depth and still have useful symbolic links`** is to adapt a sketch naming convention instead. For example, use the camel case naming strategy where the first parts repeat the above hierarchy. Thus the built-in `Blink.ino` is saved as **`basicBlink.ino`** direct below `CODE` but create first the directory **`basicBlink`** for the Arduino sketch.
+Our best solution to **`reduce the depth and still have useful symbolic links`** is to adapt a sketch naming convention instead, i.e., **not** use the above structure. Instead, use the camel case naming strategy where the first parts repeat the above hierarchy. Thus the built-in `Blink.ino` is saved as **`basicBlink.ino`** direct below `CODE` but create first the directory **`basicBlink`** for the Arduino sketch.
 
 ## Add a symbolic link (manually) in the device tree to the code directory
 
