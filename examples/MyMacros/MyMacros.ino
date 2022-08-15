@@ -8,7 +8,6 @@
 // Adding this line before the library will output compile time identification.
 #define BOARD_IDENTIFY_WARNING
 #include <MyMacros.h>   // This add all available 100+ boards from Board Identify.
-#include "macrofn.h"    // Add your macro function constructs.
 
 // Define a structure variable
 struct board myBoard;
@@ -16,7 +15,7 @@ struct board myBoard;
 void setup() {
   Serial.begin(9600);
   while (!Serial) {;}
-  delay(3000);
+  
   Serial.println();
   Serial.println("==== Setup ====");
   Serial.print("Matching board define: ");
