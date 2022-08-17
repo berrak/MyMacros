@@ -12,8 +12,6 @@
 
 // Access all data via this struct.
 struct board;
-// Easy run-time access to Arduino build board property (as in ARDUINO_BUILD_BOARD).
-#define BUILD_BOARD
 
 // My personal applied macros among all my boards.
 #define BAUD_RATE   9600
@@ -207,7 +205,7 @@ struct board;
             #define LED_BUILTIN PB6
         #endif
 
-                struct board
+        struct board
         {
             int type = 0;
             const char *make = "Debinix Team";
@@ -219,7 +217,30 @@ struct board;
             #warning "Controller: D1-mini G031F8"
             #warning "Matched defined(ARDUINO_D1MINI_G031F8)"
         #endif
-    
+
+    #elif defined(ARDUINO_DISCO_F407VG)
+        // Only new macros here
+
+        #ifndef LED_BUILTIN
+            #define LED_BUILTIN LED_GREEN
+        #endif
+
+        struct board
+        {
+            int type = 0;
+            const char *make = "STMicroelectronics";
+            const char *model = "Discovery Board F407VG-DISC1";
+            const char *mcu = "STM32F407VG";
+        };
+
+        #if defined(BOARD_IDENTIFY_WARNING)
+            #warning "Controller: Discovery Board F407VG-DISC1D1-mini G031F8"
+            #warning "Matched defined(ARDUINO_DISCO_F407VG)"
+        #endif
+
+
+
+
     #else
         struct board
         {
