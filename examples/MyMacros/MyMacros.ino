@@ -42,7 +42,7 @@ void loop() {
     delay(3000);
 
     // Should be identical to above
-    Serial.println("==== Board Identify ====");
+    Serial.println("==== Board Identify (source board data) ====");
     Serial.print("Board Type: ");
     Serial.println(BoardIdentify::type);
     Serial.print("Board Make: ");
