@@ -17,7 +17,8 @@ If you want to write code or libraries for specific platforms or a range of boar
 
 The code will be less bloated with numerous macros handling various board specifics.
 
-## How to use c++ preprocessor directives?
+## How to use Arduino's 'build.board' property for this?
+
 Here are examples of the variation in modifying code included with the help of pre-processor directives.
 ```cpp
 #if defined(ARDUINO_D1MINI_G031F6) || defined(ARDUINO_D1MINI_G031F8)
@@ -36,16 +37,16 @@ TinyPICO tp = TinyPICO();
 #endif
 ```
 ## Where to find it?
-There are several ways to get the required definitions. Arduino uses the label `build.board` that can be found in the `boards.txt` as, e.g. `tinypico.build.board=TINYPICO`. Pre-pend 'ARDUINO' to`ARDUINO_TINYPICO` for library usage. But there are alternatives like adding `#define BOARD_IDENTIFY_WARNING` before including this library. Compiling the code, a compiler warning with the information, among other information, is sent to `stdout`.
+There are several ways to get the required definitions. Arduino uses the property `build.board` that can be found in the `boards.txt` as, e.g. `tinypico.build.board=TINYPICO`. Pre-pend 'ARDUINO' to`ARDUINO_TINYPICO` for library usage. But there are alternatives like adding `#define BOARD_IDENTIFY_WARNING` before including this library. Compiling the code, a compiler warning with the information, among other information, is sent to `stdout`.
 ```cpp
 #define BOARD_IDENTIFY_WARNING
 #include <MyMacros.h>
 ```
 Ensure that `File->Preferences->compiler warnings` is set to *Default* or *All*. It will likely show up quickly in the beginning, in red - as a warning - of all compiled messages fast scrolling down your eyes.
 
-In addition, the output from `MyMacros.h` includes the matching define, for example, `Matched defined(ARDUINO_AVR_UNO)` to remind ourselves what define causes the outcome. These definitions are very useful in the code, and based on that, include, exclude code, or add some macros.
+In addition, the output from `MyMacros.h` includes the matching define `Matched defined(ARDUINO_AVR_UNO)`.
 
-An alternative at run-time. With 'printlnMatch()' macro this information is sent to Serial-port. Yet another alternative is to use the defined macro `BUILD_BOARD`.
+With the 'printlnMatch()' macro similar information is sent to Arduino `Serial` port at run-time. Yet another alternative is to use the defined macro `BUILD_BOARD`.
 ```cpp
 Serial.begin(9600);
 printlnMatch();
