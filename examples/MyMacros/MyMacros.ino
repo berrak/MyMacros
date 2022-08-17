@@ -15,7 +15,7 @@ struct board myBoard;
 void setup() {
 
   Serial.begin(9600); while (!Serial); Serial.println();
-  delay(250);  // settling time
+  delay(1000);  // settling time
   
   Serial.println("==== Setup ====");
   Serial.print("Matching board define: ");
