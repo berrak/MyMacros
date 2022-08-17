@@ -33,7 +33,7 @@ struct board;
         };
 
         #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched defined(ARDUINO_AVR_UNO)"
+            #warning "Matched: (ARDUINO_AVR_UNO)"
         #endif
 
 // ARDUINO SAMD
@@ -51,7 +51,7 @@ struct board;
         };
 
         #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched defined(ARDUINO_SAMD_MKRWAN1300)"
+            #warning "Matched: (ARDUINO_SAMD_MKRWAN1300)"
         #endif
 
 // ESP8266
@@ -69,7 +69,7 @@ struct board;
         };
 
         #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched defined(ARDUINO_ESP8266_WEMOS_D1MINI)"
+            #warning "Matched: (ARDUINO_ESP8266_WEMOS_D1MINI)"
         #endif
 
 // ESP32
@@ -87,7 +87,7 @@ struct board;
         };
 
         #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched defined(ARDUINO_ESP32_DEV)"
+            #warning "Matched: (ARDUINO_ESP32_DEV)"
         #endif
 
     #elif defined(ARDUINO_ESP32_THING)
@@ -103,7 +103,7 @@ struct board;
         };
 
         #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched defined(ARDUINO_ESP32_THING)"
+            #warning "Matched: (ARDUINO_ESP32_THING)"
         #endif
 
 //-----------------------------------------------------------------------
@@ -128,7 +128,7 @@ struct board;
         };
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: ESP32 TinyPICO"
-            #warning "Matched defined(ARDUINO_TINYPICO)"
+            #warning "Matched: (ARDUINO_TINYPICO)"
         #endif
 
 // STM32 F411CEU6 - Black Pill
@@ -150,7 +150,7 @@ struct board;
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: STM32F411CE BlackPill"
-            #warning "Matched defined(ARDUINO_BLACKPILL_F411CE)"
+            #warning "Matched: (ARDUINO_BLACKPILL_F411CE)"
         #endif
 
 // STM32 F103Fx - Blue Pill variants
@@ -172,9 +172,9 @@ struct board;
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: STM32F103x BluePill"
-            #warning "Matched defined(ARDUINO_BLUEPILL_F103C6) or"
-            #warning "Matched defined(ARDUINO_BLUEPILL_F103C8) or"
-            #warning "Matched defined(ARDUINO_BLUEPILL_F103CB)"
+            #warning "Matched: (ARDUINO_BLUEPILL_F103C6) or"
+            #warning "Matched: (ARDUINO_BLUEPILL_F103C8) or"
+            #warning "Matched: (ARDUINO_BLUEPILL_F103CB)"
         #endif            
 
     #elif defined(ARDUINO_D1MINI_G031F6)
@@ -194,7 +194,7 @@ struct board;
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: D1-mini G031F6"
-            #warning "Matched defined(ARDUINO_D1MINI_G031F6)"
+            #warning "Matched: (ARDUINO_D1MINI_G031F6)"
         #endif
 
     #elif defined(ARDUINO_D1MINI_G031F8)
@@ -215,7 +215,7 @@ struct board;
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: D1-mini G031F8"
-            #warning "Matched defined(ARDUINO_D1MINI_G031F8)"
+            #warning "Matched: (ARDUINO_D1MINI_G031F8)"
         #endif
 
     #elif defined(ARDUINO_DISCO_F407VG)
@@ -235,7 +235,7 @@ struct board;
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: Discovery Board F407VG-DISC1D1-mini G031F8"
-            #warning "Matched defined(ARDUINO_DISCO_F407VG)"
+            #warning "Matched: (ARDUINO_DISCO_F407VG)"
         #endif
 
 

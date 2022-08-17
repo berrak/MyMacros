@@ -37,16 +37,15 @@ TinyPICO tp = TinyPICO();
 #endif
 ```
 ## Where to find it?
-There are several ways to get the required definitions. Arduino uses the property `build.board` that can be found in the `boards.txt` as, e.g. `tinypico.build.board=TINYPICO`. Pre-pend 'ARDUINO' to`ARDUINO_TINYPICO` for library usage. But there are alternatives like adding `#define BOARD_IDENTIFY_WARNING` before including this library. Compiling the code, a compiler warning with the information, among other information, is sent to `stdout`.
+There are several ways to get the required definitions. Arduino uses the property `build.board` that can be found in the `boards.txt` as, e.g., `tinypico.build.board=TINYPICO`. Pre-pend 'ARDUINO' to `ARDUINO_TINYPICO` for library usage. But there are more accessible alternatives, like adding `#define BOARD_IDENTIFY_WARNING` before including this library. Compiling the code, a compiler warning with the information, among other information, is sent to `stdout`.
 ```cpp
 #define BOARD_IDENTIFY_WARNING
 #include <MyMacros.h>
 ```
 Ensure that `File->Preferences->compiler warnings` is set to *Default* or *All*. It will likely show up quickly in the beginning, in red - as a warning - of all compiled messages fast scrolling down your eyes.
 
-In addition, the output from `MyMacros.h` includes the matching define `Matched defined(ARDUINO_AVR_UNO)`.
+The matching define, i.e., `Matched: (ARDUINO_AVR_UNO)` is shown during the compilation phase. The 'printlnMatch()' macro sends similar information to Arduino `Serial` port at run-time. Yet another alternative is to use the defined built-in macro `BUILD_BOARD`.
 
-With the 'printlnMatch()' macro similar information is sent to Arduino `Serial` port at run-time. Yet another alternative is to use the defined macro `BUILD_BOARD`.
 ```cpp
 Serial.begin(9600);
 printlnMatch();
@@ -82,6 +81,14 @@ Serial.println(myBoard.model);
 Serial.print("Board MCU: ");
 Serial.println(myBoard.mcu);
 ```
+may produce following out.
+```
+ ==== MyMacros ====
+ Board Type: 0
+ Board Make: Unexpected Maker
+ Board Model: TinyPICO
+ Board MCU: ESP32
+```
 This Library automatically use board identity data that already exists in `Boards_Identify.h`. 
 
 ## How to Install
@@ -114,7 +121,9 @@ Arduino IDE will use your file that was moved to `~/mymacros`.
 
 The solution discussed here can be implemented on `Linux` and `Mac OS X`, but not on Windows. `Windows Subsystem for Linux 2` can maybe solve this. The file system has to have a specific layout to minimize duplication of code effectively. For example, we have created four different directories for our boards and one standard code directory, `CODE,` where all our sketches will live.
 
-It's probably a good idea to update your sketch folder in `File-> Preferences` with `~/Arduino.` Create som directories for your boards.
+It's probably a good idea to update your sketch folder in `File-> Preferences` with `~/Arduino.` Create som directories for your boards. 
+
+The `code links` are separated from the shared code tree and thus work as expected—this is the objective of the platform organization. Thus by glancing at the content, we know which platforms can run different types of code.
 
 ```
 ~/Arduino
