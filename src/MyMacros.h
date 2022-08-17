@@ -1,6 +1,7 @@
 /*
 *  MyMacros.h
 *  The Arduino library identifies your unique collection of development boards.
+*  Some existing macros is defined to show usage, see for example TinyPICO.
 *  Created by Debinix Team (C). Licensed under GPL-3.0.
 *  Date: 2022-08-14.
 */
@@ -9,18 +10,18 @@
 
 #pragma once
 
-// Access all data via this struct
+// Access all data via this struct.
 struct board;
-// A global variable for easy access for the matching name at run-time
-const char *match;
+// Easy run-time access to Arduino build board property (as in ARDUINO_BUILD_BOARD).
+#define BUILD_BOARD
 
-// My Universal applied macros
+// My personal applied macros among all my boards.
 #define BAUD_RATE   9600
 #define BLINK_DELAY 125
 
-//-------------------------------------------------------------------
-// All Arduino boards you own from the 'Board_Identify.h' file.
-//-------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+// All Arduino boards you own (change as you see fit) from the 'Board_Identify.h' file.
+//---------------------------------------------------------------------------------------
     #if defined(ARDUINO_AVR_UNO)
 
         // Only macros here
@@ -107,13 +108,19 @@ const char *match;
             #warning "Matched defined(ARDUINO_ESP32_THING)"
         #endif
 
-//---------------------------------------------------------------
-// All other Arduino boards you have in your ownership.
-//---------------------------------------------------------------
+//-----------------------------------------------------------------------
+// All other Arduino boards in your ownership or currently are developing.
+//-----------------------------------------------------------------------
     #elif defined(ARDUINO_TINYPICO)
 
         // Only macros here
-
+        #define TFT_MOSI  23  
+        #define TFT_SCLK  18  
+        #define TFT_CS    21
+        #define TFT_RST   5
+        #define TFT_DC    22
+        #define TFT_LED   14
+        
         struct board
         {
             int type = 0;
@@ -233,47 +240,47 @@ const char *match;
 
 #if defined(ARDUINO_AVR_UNO)
 #define printlnMatch() Serial.println("ARDUINO_AVR_UNO")
-#define match "ARDUINO_AVR_UNO"
+#define BUILD_BOARD "ARDUINO_AVR_UNO"
 
 #elif defined(ARDUINO_SAMD_MKRWAN1300)
 #define printlnMatch() Serial.println("ARDUINO_SAMD_MKRWAN1300")
-#define match "ARDUINO_SAMD_MKRWAN1300"
+#define BUILD_BOARD "ARDUINO_SAMD_MKRWAN1300"
 
 #elif defined(ARDUINO_ESP8266_WEMOS_D1MINI)
 #define printlnMatch() Serial.println("ARDUINO_ESP8266_WEMOS_D1MINI")
-#define match "ARDUINO_ESP8266_WEMOS_D1MINI"
+#define BUILD_BOARD "ARDUINO_ESP8266_WEMOS_D1MINI"
 
 #elif defined(ARDUINO_ESP32_DEV)
 #define printlnMatch() Serial.println("ARDUINO_ESP32_DEV")
-#define match "ARDUINO_ESP32_DEV"
+#define BUILD_BOARD "ARDUINO_ESP32_DEV"
 
 #elif defined(ARDUINO_ESP32_THING)
 #define printlnMatch() Serial.println("ARDUINO_ESP32_THING")
-#define match "ARDUINO_ESP32_THING"
+#define BUILD_BOARD "ARDUINO_ESP32_THING"
 
 #elif defined(ARDUINO_TINYPICO)
 #define printlnMatch() Serial.println("ARDUINO_TINYPICO")
-#define match "ARDUINO_TINYPICO"
+#define BUILD_BOARD "ARDUINO_TINYPICO"
 
 #elif defined(ARDUINO_BLACKPILL_F411CE)
 #define printlnMatch() Serial.println("ARDUINO_BLACKPILL_F411CE")
-#define match "ARDUINO_BLACKPILL_F411CE"
+#define BUILD_BOARD "ARDUINO_BLACKPILL_F411CE"
 
 #elif defined(ARDUINO_BLUEPILL_F103C6) || defined(ARDUINO_BLUEPILL_F103C8) || defined(ARDUINO_BLUEPILL_F103CB)
 #define printlnMatch() Serial.println("ARDUINO_BLUEPILL_F103C6, ARDUINO_BLUEPILL_F103C8, ARDUINO_BLUEPILL_F103CB")
-#define match "ARDUINO_BLUEPILL_F103C6, ARDUINO_BLUEPILL_F103C8, ARDUINO_BLUEPILL_F103CB"
+#define BUILD_BOARD "ARDUINO_BLUEPILL_F103C6, ARDUINO_BLUEPILL_F103C8, ARDUINO_BLUEPILL_F103CB"
 
 #elif defined(ARDUINO_D1MINI_G031F6)
 #define printlnMatch() Serial.println("ARDUINO_D1MINI_G031F6")
-#define match "ARDUINO_D1MINI_G031F6"
+#define BUILD_BOARD "ARDUINO_D1MINI_G031F6"
 
 #elif defined(ARDUINO_D1MINI_G031F8)
 #define printlnMatch() Serial.println("ARDUINO_D1MINI_G031F8")
-#define match "ARDUINO_D1MINI_G031F8"
+#define BUILD_BOARD "ARDUINO_D1MINI_G031F8"
 
 #else
 #define printlnMatch() Serial.println("UNKNOWN BOARD")
-#define match "UNKNOWN BOARD"
+#define BUILD_BOARD "UNKNOWN BOARD"
 #endif
 
 // Add more here.

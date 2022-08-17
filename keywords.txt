@@ -7,22 +7,15 @@
 # Datatypes (DATA_TYPE)
 #######################################
 
-struct board   DATA_TYPE
-
 #######################################
 # Classes & Namespaces (KEYWORD1)
 #######################################
-
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
 printlnMatch    KEYWORD2
-type	KEYWORD2
-make	KEYWORD2
-model	KEYWORD2
-mcu	KEYWORD2
 
 #######################################
 # Instances (KEYWORD3)
@@ -33,3 +26,4 @@ mcu	KEYWORD2
 #######################################
 
 BOARD_IDENTIFY_WARNING
+BUILD_BOARD

@@ -9,19 +9,19 @@
 #define BOARD_IDENTIFY_WARNING
 #include <MyMacros.h>   // This also includes all available 100+ boards from Board Identify.
 
-// Define a structure variable
+// Optional define a structure variable. Only required for access to struct data.
 struct board myBoard;
 
 void setup() {
-  Serial.begin(9600);
-  while (!Serial) {;}
+
+  Serial.begin(9600); while (!Serial); Serial.println();
+  delay(250);  // settling time
   
-  Serial.println();
   Serial.println("==== Setup ====");
   Serial.print("Matching board define: ");
   printlnMatch(); 
-  Serial.print("Global 'match' variable is assigned: ");
-  Serial.println(match);
+  Serial.print("ARDUINO_'BUILD_BOARD' property: ");
+  Serial.println(BUILD_BOARD);
   delay(1000);
 }
 
