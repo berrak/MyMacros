@@ -1,9 +1,8 @@
 [![GitHub license](https://img.shields.io/github/license/berrak/MyMacros.svg?logo=gnu&logoColor=ffffff)](https://github.com/berrak/My_Macros/blob/master/LICENSE)
 [![GitHub version](https://img.shields.io/github/release/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
 [![GitHub Release Date](https://img.shields.io/github/release-date/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
-[![GitHub stars](https://img.shields.io/github/stars/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/berrak/My_Macros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/issues)
-[![Codacy grade](https://img.shields.io/codacy/grade/05e2e79ae90d4b9489689f918ad2ccb5.svg?logo=codacy&logoColor=ffffff)](https://www.codacy.com/app/berrak/MyMacros)
+[![GitHub stars](https://img.shields.io/github/stars/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/issues)
 
 # Arduino library MyMacros
 `MyMacros` library allows identifying boards that you own. The library maintains *personal macros* for your unique collection of boards. The existing Arduino library [Board Identify](https://github.com/MattFryer/Board_Identify) aims to identify many Arduino-compatible boards. This library, `MyMacros`, adds a separate header file with a *personal* list of boards in your possession.
@@ -15,6 +14,8 @@ If you want to write code or libraries for specific platforms or a range of boar
 - extend existing board information with newly defined macros.
 - add any new data or defines for your development boards
 - add non-existent boards that are not in 'Board_Identify.h'
+
+The code will be less bloated with numerous macros handling various board specifics.
 
 ## How to use c++ preprocessor directives?
 Here are examples of the variation in modifying code included with the help of pre-processor directives.
@@ -44,13 +45,14 @@ Ensure that `File->Preferences->compiler warnings` is set to *Default* or *All*.
 
 In addition, the output from `MyMacros.h` includes the matching define, for example, `Matched defined(ARDUINO_AVR_UNO)` to remind ourselves what define causes the outcome. These definitions are very useful in the code, and based on that, include, exclude code, or add some macros.
 
-An alternative at run-time. With 'printlnMatch()' macro this information is sent to Serial-port. Yet another alternative is to access the global variable `char *match`.
+An alternative at run-time. With 'printlnMatch()' macro this information is sent to Serial-port. Yet another alternative is to use the defined macro `BUILD_BOARD`.
 ```cpp
 Serial.begin(9600);
-Serial.print("Matching board define: ");
 printlnMatch();
-// or use global
-Serial.println(match);
+ ARDUINO_TINYPICO
+// or
+Serial.println(BUILD_BOARD);
+ ARDUINO_TINYPICO
 ```
 
 ## Examples
@@ -79,7 +81,7 @@ Serial.println(myBoard.model);
 Serial.print("Board MCU: ");
 Serial.println(myBoard.mcu);
 ```
-This Library automatically use data that already exists in `Boards_Identify.h`. 
+This Library automatically use board identity data that already exists in `Boards_Identify.h`. 
 
 ## How to Install
 
@@ -136,10 +138,18 @@ For example, the idea is to have one typical *Blink* sketch for all our developm
 ├── digital
 ├── display
 ├── neopixel
-├── sensors
+├── sensor
 └── usb
 ```
-Our best solution to **`reduce the depth and still have useful symbolic links`** is to adapt a sketch naming convention instead, i.e., **not** use the above structure. Instead, use the camel case naming strategy where the first parts repeat the above hierarchy. Thus the built-in `Blink.ino` is saved as **`basicBlink.ino`** direct below `CODE` but create first the directory **`basicBlink`** for the Arduino sketch.
+Our best solution to **`reduce the depth and still have useful symbolic links`** is to adapt a sketch naming convention instead, i.e., **not** use the above structure. Instead, use the camel case naming strategy where the first parts repeat the above hierarchy. Thus the built-in `Blink.ino` is saved as **`basicBlink.ino`** direct below `CODE` but create first the directory **`basicBlink`** for the Arduino sketch. Here is a list of some inspirational prefixes in addition to the above.
+
+- data-processing
+- storage
+- sample
+- device-control
+- sensor
+- signal-io
+- timing
 
 ## Add a symbolic link (manually) in the device tree to the code directory
 

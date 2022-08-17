@@ -20,7 +20,7 @@ void setup() {
   Serial.println("==== Setup ====");
   Serial.print("Matching board define: ");
   printlnMatch(); 
-  Serial.print("ARDUINO_'BUILD_BOARD' property: ");
+  Serial.print("Arduino's 'BUILD_BOARD' property: ");
   Serial.println(BUILD_BOARD);
   delay(1000);
 }
