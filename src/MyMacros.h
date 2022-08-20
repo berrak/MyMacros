@@ -28,8 +28,6 @@ struct board;
 
     // Architecture macros here
 
-#endif
-
 #elif defined(ARDUINO_ARCH_AVR) || defined(ARDUINO_ARCH_MEGAAVR)
     #if defined(ARCH_IDENTIFY_WARNING)
     #warning "Architecture Matched: (ARDUINO_ARCH_AVR) or (ARDUINO_ARCH_MEGAAVR)"
