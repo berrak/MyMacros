@@ -5,15 +5,15 @@
 [![GitHub issues](https://img.shields.io/github/issues/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/issues)
 
 # Arduino library MyMacros
-`MyMacros` library allows identifying boards that you own. The library maintains *personal macros* for your unique collection of boards. The existing Arduino library [Board Identify](https://github.com/MattFryer/Board_Identify) aims to identify many Arduino-compatible boards. This library, `MyMacros`, adds a separate header file with a *personal* list of boards in your possession.
+`MyMacros` library allows identifying boards that you own. The library maintains *personal macros* for your unique collection of boards. The existing Arduino library [Board Identify](https://github.com/MattFryer/Board_Identify) aims to identify many Arduino-compatible boards. This library, `MyMacros`, adds a separate header file with a *personal* list of boards in your possession. In particular it focuses on Arduino's `build.board`property.
 
-Another advantage of this library is that it gives us development flexibility when working in parallel with various boards. Using `symbolic links` for specific boards [minimizes code duplication](#reduce-code-duplication). The solution discussed can be implemented on `Linux` and `Mac OS X`.
+Another advantage of this library is that it gives us development flexibility when working in parallel with various boards. Using `symbolic links` for specific boards [minimizes code duplication](#reduce-code-duplication). The solution discussed below can be implemented on `Linux` and `Mac OS X`.
 
 ## Why use this library?
-If you want to write code or libraries for specific platforms or a range of boards, it would be best if you had a way to tell them apart. Likely, that code cannot be made universal. Instead, you have to include various snippets depending on a particular board. MyMacros-library suggests using pre-processor defines for this purpose. Within the Arduino ecosystem, many kinds of definitions exist. The Library Board Identify contains over 100+ boards, but this list will never be complete considering the ever-increasing number of new development boards. In the 'MyMacros.h' header file, you can:
+If you want to write code or libraries for specific platforms or a range of boards, it would be best if you had a way to tell them apart. Likely, that code cannot be made universal. Instead, you have to include various snippets depending on a particular board. `MyMacros` library suggests using pre-processor defines for this purpose. Within the Arduino ecosystem, many kinds of definitions exist. The library `Board Identify` contains over 100+ boards, but this list will never be complete considering the ever-increasing number of new development boards. In the `MyMacros.h` header file, you can:
 - extend existing board information with newly defined macros.
 - add any new data or defines for your development boards
-- add non-existent boards that are not in 'Board_Identify.h'
+- add non-existent boards that are not in `Board_Identify.h`
 
 The code will be less bloated with numerous macros handling various board specifics.
 
@@ -22,7 +22,7 @@ The code will be less bloated with numerous macros handling various board specif
 Here are examples of the variation in modifying code included with the help of pre-processor directives.
 ```cpp
 #if defined(ARDUINO_D1MINI_G031F6) || defined(ARDUINO_D1MINI_G031F8)
- //             sda, scl
+ //            sda, scl
  TwoWire Wire2(D21,D20);
  Adafruit_SH1106G display = Adafruit_SH1106G(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire2, OLED_RESET);
 #else
@@ -37,14 +37,14 @@ TinyPICO tp = TinyPICO();
 #endif
 ```
 ## Where to find it?
-There are several ways to get the required definitions. Arduino uses the property `build.board` that can be found in the `boards.txt` as, e.g., `tinypico.build.board=TINYPICO`. Pre-pend 'ARDUINO' to `ARDUINO_TINYPICO` for library usage. But there are more accessible alternatives, like adding `#define BOARD_IDENTIFY_WARNING` before including this library. Compiling the code, a compiler warning with the information, among other information, is sent to `stdout`.
+There are several ways to get the required definitions. Arduino uses the property `build.board` that can be found in the `boards.txt` deep down in Arduino's installation structure one for every supported architecture, e.g., `tinypico.build.board=TINYPICO`. Pre-pend 'ARDUINO' to `ARDUINO_TINYPICO` for library usage. But there are more accessible alternatives, like adding `#define BOARD_IDENTIFY_WARNING` before including this library. Compiling the code, a compiler warning with the information, among other information, is sent to `stdout`.
 ```cpp
 #define BOARD_IDENTIFY_WARNING
 #include <MyMacros.h>
 ```
 Ensure that `File->Preferences->compiler warnings` is set to *Default* or *All*. It will likely show up quickly in the beginning, in red - as a warning - of all compiled messages fast scrolling down your eyes.
 
-The matching define, i.e., `Matched: (ARDUINO_AVR_UNO)` is shown during the compilation phase. The 'printlnMatch()' macro sends similar information to Arduino `Serial` port at run-time. Yet another alternative is to use the defined built-in macro `BUILD_BOARD`.
+The matching define, i.e., `Matched: (ARDUINO_AVR_UNO)` is shown during the compilation phase. The 'printlnMatch()' macro sends similar information to Arduino `Serial` port at run-time. Yet another alternative is to use the Library defined built-in macro `BUILD_BOARD`.
 
 ```cpp
 Serial.begin(9600);
@@ -81,7 +81,7 @@ Serial.println(myBoard.model);
 Serial.print("Board MCU: ");
 Serial.println(myBoard.mcu);
 ```
-may produce following out.
+The result is the following screen output.
 ```
  ==== MyMacros ====
  Board Type: 0
@@ -89,7 +89,7 @@ may produce following out.
  Board Model: TinyPICO
  Board MCU: ESP32
 ```
-This Library automatically use board identity data that already exists in `Boards_Identify.h`. 
+This library automatically uses board identity data already in `Boards_Identify.h`. The `struct board` can be expanded in any way you see fit as long as the four `type`, `make`, `model`and `mcu` is kept for compatibility with the `Board Identify` library. In the `MyMacros.h` file, there are examples of `architecture wide` selection to complement a specific board's narrow targeting.
 
 ## How to Install
 
@@ -104,7 +104,7 @@ For all the details on how to install libraries in the Arduino IDE, please see t
 
 ## Customizing and protecting your macros
 
-The `MyMacros.h` is installed in `~/Arduino/libraries/MyMacros/src/`. Use a local copy to avoid this file being overwritten by Arduino when the library updates. Protect this file and move this to `~/mymacros.` Create a symbolic link to this location. When the header file eventually is overwritten, re-create the link again.
+The `MyMacros.h` is installed in `~/Arduino/libraries/MyMacros/src/`. Use a local copy to avoid this file being overwritten by Arduino when the library updates. Protect this file and move it to `~/mymacros.` Create a symbolic link to this location. When the header file eventually is overwritten, re-create the link again.
 
 ```
 mkdir ~/mymacros
@@ -123,7 +123,7 @@ The solution discussed here can be implemented on `Linux` and `Mac OS X`, but no
 
 It's probably a good idea to update your sketch folder in `File-> Preferences` with `~/Arduino.` Create som directories for your boards. 
 
-The `code links` are separated from the shared code tree and thus work as expected—this is the objective of the platform organization. Thus by glancing at the content, we know which platforms can run different types of code.
+The `code links` are separated from the shared code tree and thus work as expected—this is the objective of the platform organization. Thus by glancing at the content, we know which platforms can run different types of code. With this structure, code maintenance is much more straightforward.
 
 ```
 ~/Arduino
@@ -135,9 +135,9 @@ The `code links` are separated from the shared code tree and thus work as expect
 └── Uno
 
 ```
-The organization for sub-folders in `CODE` is very personal. For example, use something in line with Arduino's IDE structure similar to Arduino's `File-> Examples` hierarchy (analog, basic, communication, digital, display, neopixel, sensors, usb, ...). The drawback with such tree structure is that it becomes profound, and paths get very long.
+The organization for sub-folders in `CODE` is very personal. However, for a conceptual example, one may use something in line with Arduino's IDE structure, i.e., similar to Arduino's `File-> Examples` hierarchy (analog, basic, communication, digital, display, neopixel, sensors, usb, ...). The drawback with such a tree structure is that it becomes profound, and paths get very long.
 
-For example, the idea is to have one typical *Blink* sketch for all our development boards. Thus, when saving the built-in `Blink.ino` sketch say below `CODE,` e.g. `../CODE/basic/blink/blink.ino` but not below any development board directories. The header macros will handle any differences between individual boards.
+The fundamental idea is to have one typical *Blink* sketch for all our development boards. Thus, when saving the built-in `Blink.ino` sketch below `CODE,` e.g. `../CODE/basic/blink/blink.ino` but **not** below any development board directories. The `MyMacros.h` macros will handle any differences between individual boards.
 
 ```
 ~/Arduino/CODE$ tree -L 1
@@ -160,10 +160,11 @@ Our best solution to **`reduce the depth and still have useful symbolic links`**
 - sensor
 - signal-io
 - timing
+- audio
 
 ## Add a symbolic link (manually) in the device tree to the code directory
 
-Change the folder to one of the development boards and its main directory and create the link to the familiar `basicBlink.ino`.
+To get a basic understanding of this working procedure, following along below will clarify the idea. Later we will replace this with a command script. But, first, change the folder to one of the development boards and its directory and create the link to the familiar `basicBlink.ino`.
 ```
 $ cd ~/Arduino/STM32G0
 $ mkdir basicBlink
@@ -172,7 +173,7 @@ $ ln -s ../../CODE/basicBlink/basicBlink.ino basicBlink.ino
 $ ls -l
  basicBlink.ino -> ../../CODE/basicBlink/basicBlink.ino
 ```
-We are working in this particular development board directory, but we are editing the typical `basicBlink.ino` file. Define the board macros in the `MyMacros.h` file. The sketch has its directory, as Arduino requires, and allows adding other files in the same folder.
+We are working in this particular development board directory, but we are editing the typical `basicBlink.ino` file. Define any specific board macros in the `MyMacros.h` file. The sketch has its directory, as Arduino requires, and allows adding other files in the same folder.
 
 Change to another development board folder, the main directory, and create a second link to the common `basicBlink.ino`.
 ```
@@ -183,8 +184,8 @@ $ ln -s ../../CODE/basicBlink/basicBlink.ino basicBlink.ino
 $ ls -l
  basicBlink.ino -> ../../CODE/basicBlink/basicBlink.ino
 ```
-The above steps are somewhat tedious, but the script `mylink` below becomes effortless.
-This concept reduces the clutter of files, with fewer duplicates in the file system, for files essentially performing the same task.
+The above steps are somewhat tedious, but the script `mylink` below this becomes an effortless task.
+This concept reduces the clutter of files, with fewer duplicates in the file system, for sketches essentially performing the same functionality.
 
 ## Adding a new architecture
 
@@ -194,12 +195,11 @@ cd ~/CODE
 mkdir rp2040
 cp -r Uno/* rp2040/
 ```
-Folders are insensitive to later changes, like, for example, `rp2040` to `RPI-rp2040`, and the links still work as before.
+The board folder names are insensitive to later changes, like, for example, `rp2040` to `RPI-rp2040`, and the links still work as before.
 
 ## Automation of link creation
 
-Now we will create a command script called `mylink`. Run this in the development board directory, and this makes a symbolic link.
-Open an editor and copy the script content below. This file is also included in the library in the `script` folder.
+Now we will create a command script called `mylink`. Run this in the development board directory, and this makes a symbolic link and the required sketch library. Open an editor and copy the script content below. This file is also included in the library in the `script` folder.
 
 ```bash
 #!/bin/bash
