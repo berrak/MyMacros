@@ -21,8 +21,6 @@ struct board;
 
     // Architecture macros here
 
-#endif
-
 #elif defined(ARDUINO_ARCH_ESP32)
     #if defined(ARCH_IDENTIFY_WARNING)
     #warning "Architecture Matched: (ARDUINO_ARCH_ESP32)"
@@ -39,16 +37,12 @@ struct board;
 
     // Architecture macros here
 
-#endif
-
 #elif defined(ARDUINO_ARCH_STM32) || defined(ARDUINO_ARCH_ARDUINO_CORE_STM32)
     #if defined(ARCH_IDENTIFY_WARNING)
     #warning "Architecture Matched: (ARDUINO_ARCH_STM32) or (ARDUINO_ARCH_ARDUINO_CORE_STM32)"
     #endif
 
     // Architecture macros here
-
-#endif
 
 #elif defined(ARDUINO_ARCH_RP2040)
     #if defined(ARCH_IDENTIFY_WARNING)
