@@ -6,6 +6,7 @@
 */
 
 // Adding this line before the library will output compile time identification.
+#define ARCH_IDENTIFY_WARNING
 #define BOARD_IDENTIFY_WARNING
 #include <MyMacros.h>   // This also includes all available 100+ boards from Board Identify.
 

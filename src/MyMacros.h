@@ -16,35 +16,35 @@ struct board;
 // Architecture wide macros
 #if defined(ARDUINO_ARCH_ESP8266)
     #if defined(ARCH_IDENTIFY_WARNING)
-    #warning "Architecture Matched: (ARDUINO_ARCH_ESP8266)"
+    #warning "Matched Architecture: (ARDUINO_ARCH_ESP8266)"
     #endif
 
     // Architecture macros here
 
 #elif defined(ARDUINO_ARCH_ESP32)
     #if defined(ARCH_IDENTIFY_WARNING)
-    #warning "Architecture Matched: (ARDUINO_ARCH_ESP32)"
+    #warning "Matched Architecture: (ARDUINO_ARCH_ESP32)"
     #endif
 
     // Architecture macros here
 
 #elif defined(ARDUINO_ARCH_AVR) || defined(ARDUINO_ARCH_MEGAAVR)
     #if defined(ARCH_IDENTIFY_WARNING)
-    #warning "Architecture Matched: (ARDUINO_ARCH_AVR) or (ARDUINO_ARCH_MEGAAVR)"
+    #warning "Matched Architecture: (ARDUINO_ARCH_AVR) or (ARDUINO_ARCH_MEGAAVR)"
     #endif
 
     // Architecture macros here
 
 #elif defined(ARDUINO_ARCH_STM32) || defined(ARDUINO_ARCH_ARDUINO_CORE_STM32)
     #if defined(ARCH_IDENTIFY_WARNING)
-    #warning "Architecture Matched: (ARDUINO_ARCH_STM32) or (ARDUINO_ARCH_ARDUINO_CORE_STM32)"
+    #warning "Matched Architecture: (ARDUINO_ARCH_STM32) or (ARDUINO_ARCH_ARDUINO_CORE_STM32)"
     #endif
 
     // Architecture macros here
 
 #elif defined(ARDUINO_ARCH_RP2040)
     #if defined(ARCH_IDENTIFY_WARNING)
-    #warning "Architecture Matched: (ARDUINO_ARCH_RP2040)"
+    #warning "Matched Architecture: (ARDUINO_ARCH_RP2040)"
     #endif
 
     // Architecture macros here
