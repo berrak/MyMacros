@@ -44,7 +44,7 @@ There are several ways to get the required definitions. Arduino uses the propert
 ```
 Ensure that `File->Preferences->compiler warnings` is set to *Default* or *All*. It will likely show up quickly in the beginning, in red - as a warning - of all compiled messages fast scrolling down your eyes.
 
-The matching define, i.e., `Matched: (ARDUINO_AVR_UNO)` is shown during the compilation phase. The 'printlnMatch()' macro sends similar information to Arduino `Serial` port at run-time. Yet another alternative is to use the Library defined built-in macro `BUILD_BOARD`.
+The matching define, i.e., `Matched Board: (ARDUINO_AVR_UNO)` is shown during the compilation phase. The 'printlnMatch()' macro sends similar information to Arduino `Serial` port at run-time. Yet another alternative is to use the Library defined built-in macro `BUILD_BOARD`.
 
 ```cpp
 Serial.begin(9600);
@@ -53,6 +53,11 @@ printlnMatch();
 // or
 Serial.println(BUILD_BOARD);
  ARDUINO_TINYPICO
+```
+With `ARCH_IDENTIFY_WARNING` the matched architecture is shown when compiling the sketch.
+```cpp
+#define ARCH_IDENTIFY_WARNING
+#include <MyMacros.h>
 ```
 
 ## Examples

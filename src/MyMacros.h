@@ -13,12 +13,68 @@
 // Access all data via this struct.
 struct board;
 
+// Architecture wide macros
+#if defined(ARDUINO_ARCH_ESP8266)
+    #if defined(ARCH_IDENTIFY_WARNING)
+    #warning "Architecture Matched: (ARDUINO_ARCH_ESP8266)"
+    #endif
+
+    // Architecture macros here
+
+#endif
+
+#elif defined(ARDUINO_ARCH_ESP32)
+    #if defined(ARCH_IDENTIFY_WARNING)
+    #warning "Architecture Matched: (ARDUINO_ARCH_ESP32)"
+    #endif
+
+    // Architecture macros here
+
+#endif
+
+#elif defined(ARDUINO_ARCH_AVR) || defined(ARDUINO_ARCH_MEGAAVR)
+    #if defined(ARCH_IDENTIFY_WARNING)
+    #warning "Architecture Matched: (ARDUINO_ARCH_AVR) or (ARDUINO_ARCH_MEGAAVR)"
+    #endif
+
+    // Architecture macros here
+
+#endif
+
+#elif defined(ARDUINO_ARCH_STM32) || defined(ARDUINO_ARCH_ARDUINO_CORE_STM32)
+    #if defined(ARCH_IDENTIFY_WARNING)
+    #warning "Architecture Matched: (ARDUINO_ARCH_STM32) or (ARDUINO_ARCH_ARDUINO_CORE_STM32)"
+    #endif
+
+    // Architecture macros here
+
+#endif
+
+#elif defined(ARDUINO_ARCH_RP2040)
+    #if defined(ARCH_IDENTIFY_WARNING)
+    #warning "Architecture Matched: (ARDUINO_ARCH_RP2040)"
+    #endif
+
+    // Architecture macros here
+
+#else
+    #if defined(ARCH_IDENTIFY_WARNING)
+        #warning "Architecture  currently not identified, please add an issue at Github/berrak/MyMacros"
+    #endif
+#endif
+
+
+
 // My personal applied macros among all my boards.
-#define BAUD_RATE   9600
-#define BLINK_DELAY 125
+#ifndef BAUD_RATE
+    #define BAUD_RATE   115200
+#endif
+#ifndef BLINK_DELAY
+    #define BLINK_DELAY 125
+#endif
 
 //---------------------------------------------------------------------------------------
-// All Arduino boards you own (change as you see fit) from the 'Board_Identify.h' file.
+// All Arduino boards you own (add as you see fit) from the 'Board_Identify.h' file.
 //---------------------------------------------------------------------------------------
     #if defined(ARDUINO_AVR_UNO)
 
@@ -33,7 +89,7 @@ struct board;
         };
 
         #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched: (ARDUINO_AVR_UNO)"
+            #warning "Matched Board: (ARDUINO_AVR_UNO)"
         #endif
 
 // ARDUINO SAMD
@@ -51,7 +107,7 @@ struct board;
         };
 
         #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched: (ARDUINO_SAMD_MKRWAN1300)"
+            #warning "Matched Board: (ARDUINO_SAMD_MKRWAN1300)"
         #endif
 
 // ESP8266
@@ -69,7 +125,7 @@ struct board;
         };
 
         #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched: (ARDUINO_ESP8266_WEMOS_D1MINI)"
+            #warning "Matched Board: (ARDUINO_ESP8266_WEMOS_D1MINI)"
         #endif
 
 // ESP32
@@ -87,7 +143,7 @@ struct board;
         };
 
         #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched: (ARDUINO_ESP32_DEV)"
+            #warning "Matched Board: (ARDUINO_ESP32_DEV)"
         #endif
 
     #elif defined(ARDUINO_ESP32_THING)
@@ -103,7 +159,7 @@ struct board;
         };
 
         #if defined(BOARD_IDENTIFY_WARNING)
-            #warning "Matched: (ARDUINO_ESP32_THING)"
+            #warning "Matched Board: (ARDUINO_ESP32_THING)"
         #endif
 
 //-----------------------------------------------------------------------
@@ -128,7 +184,7 @@ struct board;
         };
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: ESP32 TinyPICO"
-            #warning "Matched: (ARDUINO_TINYPICO)"
+            #warning "Matched Board: (ARDUINO_TINYPICO)"
         #endif
 
 // STM32 F411CEU6 - Black Pill
@@ -150,7 +206,7 @@ struct board;
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: STM32F411CE BlackPill"
-            #warning "Matched: (ARDUINO_BLACKPILL_F411CE)"
+            #warning "Matched Board: (ARDUINO_BLACKPILL_F411CE)"
         #endif
 
 // STM32 F103Fx - Blue Pill variants
@@ -172,9 +228,9 @@ struct board;
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: STM32F103x BluePill"
-            #warning "Matched: (ARDUINO_BLUEPILL_F103C6) or"
-            #warning "Matched: (ARDUINO_BLUEPILL_F103C8) or"
-            #warning "Matched: (ARDUINO_BLUEPILL_F103CB)"
+            #warning "Matched Board: (ARDUINO_BLUEPILL_F103C6) or"
+            #warning "Matched Board: (ARDUINO_BLUEPILL_F103C8) or"
+            #warning "Matched Board: (ARDUINO_BLUEPILL_F103CB)"
         #endif            
 
     #elif defined(ARDUINO_D1MINI_G031F6)
@@ -194,7 +250,7 @@ struct board;
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: D1-mini G031F6"
-            #warning "Matched: (ARDUINO_D1MINI_G031F6)"
+            #warning "Matched Board: (ARDUINO_D1MINI_G031F6)"
         #endif
 
     #elif defined(ARDUINO_D1MINI_G031F8)
@@ -215,7 +271,7 @@ struct board;
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: D1-mini G031F8"
-            #warning "Matched: (ARDUINO_D1MINI_G031F8)"
+            #warning "Matched Board: (ARDUINO_D1MINI_G031F8)"
         #endif
 
     #elif defined(ARDUINO_DISCO_F407VG)
@@ -235,7 +291,7 @@ struct board;
 
         #if defined(BOARD_IDENTIFY_WARNING)
             #warning "Controller: Discovery Board F407VG-DISC1D1-mini G031F8"
-            #warning "Matched: (ARDUINO_DISCO_F407VG)"
+            #warning "Matched Board: (ARDUINO_DISCO_F407VG)"
         #endif
 
 
@@ -299,13 +355,11 @@ struct board;
 #define printlnMatch() Serial.println("ARDUINO_D1MINI_G031F8")
 #define BUILD_BOARD "ARDUINO_D1MINI_G031F8"
 
+// Add more here.
+
 #else
 #define printlnMatch() Serial.println("UNKNOWN BOARD")
 #define BUILD_BOARD "UNKNOWN BOARD"
 #endif
 
-// Add more here.
-
-
 /* EOF */
-
