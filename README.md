@@ -166,6 +166,7 @@ Our best solution to **`reduce the depth and still have useful symbolic links`**
 - signal-io
 - timing
 - audio
+- project
 
 ## Add a symbolic link (manually) in the device tree to the code directory
 
