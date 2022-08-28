@@ -100,6 +100,8 @@ This library automatically uses board identity data already in `Boards_Identify.
 
 ## How to Install
 
+You can also click on the green `Library Manager` badge above for instructions.
+
 1. Navigate to the [Releases page](https://github.com/berrak/My_Macros/releases).
 1. Download the latest released ZIP-archive in `~/Arduino/libraries`.
 1. Unzip the archive.
