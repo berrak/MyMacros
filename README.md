@@ -1,4 +1,5 @@
 [![GitHub license](https://img.shields.io/github/license/berrak/MyMacros.svg?logo=gnu&logoColor=ffffff)](https://github.com/berrak/My_Macros/blob/master/LICENSE)
+[![Installation instructions](https://www.ardu-badge.com/badge/MyMacros.svg?)](https://www.ardu-badge.com/MyMacros)
 [![GitHub version](https://img.shields.io/github/release/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
 [![GitHub Release Date](https://img.shields.io/github/release-date/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
 [![GitHub stars](https://img.shields.io/github/stars/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/stargazers)
@@ -59,6 +60,7 @@ With `ARCH_IDENTIFY_WARNING` the matched architecture is shown when compiling th
 #define ARCH_IDENTIFY_WARNING
 #include <MyMacros.h>
 ```
+The [hardware architecture folder](https://arduino.github.io/arduino-cli/0.25/platform-specification/#hardware-folders-structure) of the board's platform is the source of information to be able to write architecture-specific code with the `ARDUINO_ARCH_XXX` preprocessor macro (#define), where XXX is the name of the architecture. You maintain this information for your boards at the end of the `MyMacros.h` file.
 
 ## Examples
 
