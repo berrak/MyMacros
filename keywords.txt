@@ -15,7 +15,7 @@
 # Methods and Functions (KEYWORD2)
 #######################################
 
-printlnMatch    KEYWORD2
+printlnMatch	KEYWORD2
 
 #######################################
 # Instances (KEYWORD3)
@@ -25,6 +25,6 @@ printlnMatch    KEYWORD2
 # Constants (LITERAL1)
 #######################################
 
-BOARD_IDENTIFY_WARNING
-ARCH_IDENTIFY_WARNING
-BUILD_BOARD
+BOARD_IDENTIFY_WARNING	LITERAL1
+ARCH_IDENTIFY_WARNING	LITERAL1
+BUILD_BOARD	LITERAL1
