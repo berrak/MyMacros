@@ -1,8 +1,8 @@
 /*
 *  MyMacros.ino
 *  Demonstrates backward compatiblity (Board Identify) and new extendability.
-*  Created by Debinix Team (C). Licensed under GPL-3.0.
-*  Date: 2022-08-14.
+*  Created by Debinix Team (C). The MIT License (MIT).
+*  Date: 2022-08-31.
 */
 
 // Adding this line before the library will output compile time identification.

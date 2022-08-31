@@ -2,8 +2,8 @@
 *  MyMacros.h
 *  The Arduino library identifies your unique collection of development boards.
 *  Some existing macros is defined to show usage, see for example TinyPICO.
-*  Created by Debinix Team (C). Licensed under GPL-3.0.
-*  Date: 2022-08-14.
+*  Created by Debinix Team (C). The MIT License (MIT).
+*  Date: 2022-08-31.
 */
 
 #include <Board_Identify.h>
