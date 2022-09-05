@@ -1,6 +1,5 @@
 [![GitHub license](https://img.shields.io/github/license/berrak/MyMacros.svg?logo=gnu&logoColor=ffffff)](https://github.com/berrak/MyMacros/blob/master/LICENSE)
 [![Installation instructions](https://www.ardu-badge.com/badge/MyMacros.svg?)](https://www.ardu-badge.com/MyMacros)
-[![GitHub version](https://img.shields.io/github/release/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/releases/latest)
 [![GitHub issues](https://img.shields.io/github/issues/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/issues)
 [![Documentation](https://img.shields.io/badge/documentation-doxygen-green.svg)](http://berrak.github.io/MyMacros/)
 
