@@ -98,7 +98,7 @@ This library automatically uses board identity data already in `Boards_Identify.
 
 ## Documentation (GitHub Pages - Doxygen)
 
-[Library documentation](https://berrak.github.io/MyMacros/).
+[Library documentation](https://berrak.github.io/MyMacros/structboard.html).
 
 ## How to Install
 
