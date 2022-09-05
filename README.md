@@ -1,9 +1,8 @@
-[![GitHub license](https://img.shields.io/github/license/berrak/MyMacros.svg?logo=gnu&logoColor=ffffff)](https://github.com/berrak/My_Macros/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/berrak/MyMacros.svg?logo=gnu&logoColor=ffffff)](https://github.com/berrak/MyMacros/blob/master/LICENSE)
 [![Installation instructions](https://www.ardu-badge.com/badge/MyMacros.svg?)](https://www.ardu-badge.com/MyMacros)
-[![GitHub version](https://img.shields.io/github/release/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
-[![GitHub Release Date](https://img.shields.io/github/release-date/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/My_Macros/releases/latest)
-[![GitHub stars](https://img.shields.io/github/stars/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/stargazers)
+[![GitHub version](https://img.shields.io/github/release/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/releases/latest)
 [![GitHub issues](https://img.shields.io/github/issues/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/issues)
+[![Documentation](https://img.shields.io/badge/documentation-doxygen-green.svg)](http://berrak.github.io/MyMacros/)
 
 # Arduino library MyMacros
 `MyMacros` library allows identifying boards that you own. The library maintains *personal macros* for your unique collection of boards. The existing Arduino library [Board Identify](https://github.com/MattFryer/Board_Identify) aims to identify many Arduino-compatible boards. This library, `MyMacros`, adds a separate header file with a *personal* list of boards in your possession. In particular it focuses on Arduino's `build.board`property.
@@ -98,18 +97,21 @@ The result is the following screen output.
 ```
 This library automatically uses board identity data already in `Boards_Identify.h`. The `struct board` can be expanded in any way you see fit as long as the four `type`, `make`, `model`and `mcu` is kept for compatibility with the `Board Identify` library. In the `MyMacros.h` file, there are examples of `architecture wide` selection to complement a specific board's narrow targeting.
 
+## Documentation (GitHub Pages - Doxygen)
+
+[Library documentation](https://berrak.github.io/MyMacros/).
+
 ## How to Install
 
-You can also click on the green `Library Manager` badge above for instructions.
+Click on the green `Library Manager` badge above for instructions,
+or use the alternative manual installation procedure.
 
-1. Navigate to the [Releases page](https://github.com/berrak/My_Macros/releases).
+1. Navigate to the [Releases page](https://github.com/berrak/MyMacros/releases).
 1. Download the latest released ZIP-archive in `~/Arduino/libraries`.
 1. Unzip the archive.
 1. Rename the new directory. Remove *version-code*, or *master* in the name like this for `MyMacros`.
 1. Restart Arduino IDE.
 1. In Arduino IDE scroll down the long list below `Sketch->Include Library` and find `MyMacros`.
-
-For all the details on how to install libraries in the Arduino IDE, please see the [Arduino website](https://www.arduino.cc/en/Guide/Libraries). It is worthwhile reading.
 
 ## Customizing and protecting your macros
 
@@ -273,7 +275,7 @@ If you run it without an argument, the command will ask for the name of the sket
 
 ## Final thoughts
 
-If you set Arduino `File->Preferences` to update libraries at start up, be mindful since you may overwrite the symbolic link to your customizations. In that case, re-create the symbolic link to `~/mymacros`. For planned changes, improvements, and known bugs, please visit the [Github issues tracker](https://github.com/berrak/My_Macros/issues).
+If you set Arduino `File->Preferences` to update libraries at start up, be mindful since you may overwrite the symbolic link to your customizations. In that case, re-create the symbolic link to `~/mymacros`. For planned changes, improvements, and known bugs, please visit the [Github issues tracker](https://github.com/berrak/MyMacros/issues).
 
 The device tree does not maintain the neat hierarchical organization below CODE. Thus, choosing meaningful file names when first saving the file in the CODE-tree is helpful. Another challenge is the regression testing of code written for multiple devices. Traversing the symbolic links for each or a single board during testing is one way to set up tests.
 
