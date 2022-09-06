@@ -1,7 +1,7 @@
 [![GitHub license](https://img.shields.io/github/license/berrak/MyMacros.svg?logo=gnu&logoColor=ffffff)](https://github.com/berrak/MyMacros/blob/master/LICENSE)
 [![Installation instructions](https://www.ardu-badge.com/badge/MyMacros.svg?)](https://www.ardu-badge.com/MyMacros)
 [![GitHub issues](https://img.shields.io/github/issues/berrak/MyMacros.svg?logo=github&logoColor=ffffff)](https://github.com/berrak/MyMacros/issues)
-[![Documentation](https://img.shields.io/badge/documentation-doxygen-green.svg)](http://berrak.github.io/MyMacros/)
+[![Documentation](https://img.shields.io/badge/documentation-doxygen-green.svg)](https://berrak.github.io/MyMacros/structboard.html)
 
 # Arduino library MyMacros
 `MyMacros` library allows identifying boards that you own. The library maintains *personal macros* for your unique collection of boards. The existing Arduino library [Board Identify](https://github.com/MattFryer/Board_Identify) aims to identify many Arduino-compatible boards. This library, `MyMacros`, adds a separate header file with a *personal* list of boards in your possession. In particular it focuses on Arduino's `build.board`property.
