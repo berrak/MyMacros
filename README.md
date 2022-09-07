@@ -216,8 +216,8 @@ Now we will create a command script called `mylink`. Run this in the development
 #!/bin/bash
 #
 # mylink - script to find and create a symbolic link to a source Arduino sketch
-# Author: Debinix Team (C). License GPL-3.0
-# Date: 2022-08-14.
+# Author: Debinix Team (C). The MIT License.
+# Date: 2022-09-07.
 #
 parent_boards_directory_name="Arduino/CODE"
 
