@@ -18,4 +18,3 @@
  * The MIT license.
  *
  */
-

@@ -38,8 +38,7 @@ struct board;
 
 #elif defined(ARDUINO_ARCH_STM32) || defined(ARDUINO_ARCH_ARDUINO_CORE_STM32)
 #if defined(ARCH_IDENTIFY_WARNING)
-#warning                                                                       \
-    "Matched Architecture: (ARDUINO_ARCH_STM32) or (ARDUINO_ARCH_ARDUINO_CORE_STM32)"
+#warning "Matched Architecture: (ARDUINO_ARCH_STM32) or (ARDUINO_ARCH_ARDUINO_CORE_STM32)"
 #endif
 
 // Architecture macros here
@@ -53,17 +52,16 @@ struct board;
 
 #else
 #if defined(ARCH_IDENTIFY_WARNING)
-#warning                                                                       \
-    "Architecture  currently not identified, please add an issue at Github/berrak/MyMacros"
+#warning "Architecture  currently not identified, please add an issue at Github/berrak/MyMacros"
 #endif
 #endif
 
 // My personal applied macros among all my boards.
 #ifndef BAUD_RATE
-#define BAUD_RATE 115200  ///< Personal definition of baudrate, change as you see fit.
+#define BAUD_RATE 115200 ///< Personal definition of baudrate, change as you see fit.
 #endif
 #ifndef BLINK_DELAY
-#define BLINK_DELAY 125   ///< Personal definition of led blink rate in milliseconds, change as you see fit.
+#define BLINK_DELAY 125 ///< Personal definition of led blink rate in milliseconds, change as you see fit.
 #endif
 
 //---------------------------------------------------------------------------------------
@@ -75,10 +73,10 @@ struct board;
 // Only macros here
 
 struct board {
-  int type = BoardIdentify::type;
-  const char *make = BoardIdentify::make;
-  const char *model = BoardIdentify::model;
-  const char *mcu = BoardIdentify::mcu;
+    int type = BoardIdentify::type;
+    const char *make = BoardIdentify::make;
+    const char *model = BoardIdentify::model;
+    const char *mcu = BoardIdentify::mcu;
 };
 
 #if defined(BOARD_IDENTIFY_WARNING)
@@ -92,10 +90,10 @@ struct board {
 // Only macros here
 
 struct board {
-  int type = BoardIdentify::type;
-  const char *make = BoardIdentify::make;
-  const char *model = BoardIdentify::model;
-  const char *mcu = BoardIdentify::mcu;
+    int type = BoardIdentify::type;
+    const char *make = BoardIdentify::make;
+    const char *model = BoardIdentify::model;
+    const char *mcu = BoardIdentify::mcu;
 };
 
 #if defined(BOARD_IDENTIFY_WARNING)
@@ -109,10 +107,10 @@ struct board {
 // Only macros here
 
 struct board {
-  int type = BoardIdentify::type;
-  const char *make = BoardIdentify::make;
-  const char *model = BoardIdentify::model;
-  const char *mcu = BoardIdentify::mcu;
+    int type = BoardIdentify::type;
+    const char *make = BoardIdentify::make;
+    const char *model = BoardIdentify::model;
+    const char *mcu = BoardIdentify::mcu;
 };
 
 #if defined(BOARD_IDENTIFY_WARNING)
@@ -126,10 +124,10 @@ struct board {
 // Only macros here
 
 struct board {
-  int type = BoardIdentify::type;
-  const char *make = BoardIdentify::make;
-  const char *model = BoardIdentify::model;
-  const char *mcu = BoardIdentify::mcu;
+    int type = BoardIdentify::type;
+    const char *make = BoardIdentify::make;
+    const char *model = BoardIdentify::model;
+    const char *mcu = BoardIdentify::mcu;
 };
 
 #if defined(BOARD_IDENTIFY_WARNING)
@@ -141,10 +139,10 @@ struct board {
 // Only macros here
 
 struct board {
-  int type = BoardIdentify::type;
-  const char *make = BoardIdentify::make;
-  const char *model = BoardIdentify::model;
-  const char *mcu = BoardIdentify::mcu;
+    int type = BoardIdentify::type;
+    const char *make = BoardIdentify::make;
+    const char *model = BoardIdentify::model;
+    const char *mcu = BoardIdentify::mcu;
 };
 
 #if defined(BOARD_IDENTIFY_WARNING)
@@ -165,10 +163,10 @@ struct board {
 #define TFT_LED 14
 
 struct board {
-  int type = 0;
-  const char *make = "Unexpected Maker";
-  const char *model = "TinyPICO";
-  const char *mcu = "ESP32";
+    int type = 0;
+    const char *make = "Unexpected Maker";
+    const char *model = "TinyPICO";
+    const char *mcu = "ESP32";
 };
 #if defined(BOARD_IDENTIFY_WARNING)
 #warning "Controller: ESP32 TinyPICO"
@@ -185,10 +183,10 @@ struct board {
 #endif
 
 struct board {
-  int type = 0;
-  const char *make = "WeAct Studio";
-  const char *model = "BlackPill";
-  const char *mcu = "STM32F411CE";
+    int type = 0;
+    const char *make = "WeAct Studio";
+    const char *model = "BlackPill";
+    const char *mcu = "STM32F411CE";
 };
 
 #if defined(BOARD_IDENTIFY_WARNING)
@@ -198,8 +196,7 @@ struct board {
 
 // STM32 F103Fx - Blue Pill variants
 
-#elif defined(ARDUINO_BLUEPILL_F103C6) || defined(ARDUINO_BLUEPILL_F103C8) ||  \
-    defined(ARDUINO_BLUEPILL_F103CB)
+#elif defined(ARDUINO_BLUEPILL_F103C6) || defined(ARDUINO_BLUEPILL_F103C8) || defined(ARDUINO_BLUEPILL_F103CB)
 
 // Only macros here
 #ifndef LED_BUILTIN
@@ -207,10 +204,10 @@ struct board {
 #endif
 
 struct board {
-  int type = 0;
-  const char *make = "Generic";
-  const char *model = "BluePill";
-  const char *mcu = "STM32F103x";
+    int type = 0;
+    const char *make = "Generic";
+    const char *model = "BluePill";
+    const char *mcu = "STM32F103x";
 };
 
 #if defined(BOARD_IDENTIFY_WARNING)
@@ -228,10 +225,10 @@ struct board {
 #endif
 
 struct board {
-  int type = 0;
-  const char *make = "Debinix Team";
-  const char *model = "D1-mini G031Fx";
-  const char *mcu = "STM32G031F6";
+    int type = 0;
+    const char *make = "Debinix Team";
+    const char *model = "D1-mini G031Fx";
+    const char *mcu = "STM32G031F6";
 };
 
 #if defined(BOARD_IDENTIFY_WARNING)
@@ -247,10 +244,10 @@ struct board {
 #endif
 
 struct board {
-  int type = 0;
-  const char *make = "Debinix Team";
-  const char *model = "D1-mini G031Fx";
-  const char *mcu = "STM32G031F8";
+    int type = 0;
+    const char *make = "Debinix Team";
+    const char *model = "D1-mini G031Fx";
+    const char *mcu = "STM32G031F8";
 };
 
 #if defined(BOARD_IDENTIFY_WARNING)
@@ -266,10 +263,10 @@ struct board {
 #endif
 
 struct board {
-  int type = 0;
-  const char *make = "STMicroelectronics";
-  const char *model = "Discovery Board F407VG-DISC1";
-  const char *mcu = "STM32F407VG";
+    int type = 0;
+    const char *make = "STMicroelectronics";
+    const char *model = "Discovery Board F407VG-DISC1";
+    const char *mcu = "STM32F407VG";
 };
 
 #if defined(BOARD_IDENTIFY_WARNING)
@@ -280,10 +277,10 @@ struct board {
 #else
 /**  The structure holds members from Board Identify library */
 struct board {
-  int type = 0;                   /**< Board type is a unique number assigned by Board Identify library  */
-  const char *make = "Unknown";   /**< Manufactures name */
-  const char *model = "Unknown";  /**< Model name */
-  const char *mcu = "Unknown";    /**< Microcontroller used on the board */
+    int type = 0;                  /**< Board type is a unique number assigned by Board Identify library  */
+    const char *make = "Unknown";  /**< Manufactures name */
+    const char *model = "Unknown"; /**< Model name */
+    const char *mcu = "Unknown";   /**< Microcontroller used on the board */
 };
 
 #if defined(BOARD_IDENTIFY_WARNING)
@@ -323,13 +320,11 @@ struct board {
 #define printlnMatch() Serial.println("ARDUINO_BLACKPILL_F411CE")
 #define BUILD_BOARD "ARDUINO_BLACKPILL_F411CE"
 
-#elif defined(ARDUINO_BLUEPILL_F103C6) || defined(ARDUINO_BLUEPILL_F103C8) ||  \
-    defined(ARDUINO_BLUEPILL_F103CB)
-#define printlnMatch()                                                         \
-  Serial.println("ARDUINO_BLUEPILL_F103C6, ARDUINO_BLUEPILL_F103C8, "          \
-                 "ARDUINO_BLUEPILL_F103CB")
-#define BUILD_BOARD                                                            \
-  "ARDUINO_BLUEPILL_F103C6, ARDUINO_BLUEPILL_F103C8, ARDUINO_BLUEPILL_F103CB"
+#elif defined(ARDUINO_BLUEPILL_F103C6) || defined(ARDUINO_BLUEPILL_F103C8) || defined(ARDUINO_BLUEPILL_F103CB)
+#define printlnMatch()                                                                                       \
+    Serial.println("ARDUINO_BLUEPILL_F103C6, ARDUINO_BLUEPILL_F103C8, "                                      \
+                   "ARDUINO_BLUEPILL_F103CB")
+#define BUILD_BOARD "ARDUINO_BLUEPILL_F103C6, ARDUINO_BLUEPILL_F103C8, ARDUINO_BLUEPILL_F103CB"
 
 #elif defined(ARDUINO_D1MINI_G031F6)
 #define printlnMatch() Serial.println("ARDUINO_D1MINI_G031F6")
@@ -342,8 +337,9 @@ struct board {
 // Add more here.
 
 #else
-#define printlnMatch() Serial.println("UNKNOWN BOARD")    ///<  Calls Serial.println() and prints identified board
-#define BUILD_BOARD "UNKNOWN BOARD"                       ///<  The defined identified board, as a macro
+#define printlnMatch()                                                                                       \
+    Serial.println("UNKNOWN BOARD") ///<  Calls Serial.println() and prints identified board
+#define BUILD_BOARD "UNKNOWN BOARD" ///<  The defined identified board, as a macro
 #endif
 
 /* EOF */
